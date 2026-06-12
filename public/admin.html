@@ -729,7 +729,7 @@
           <label>标签，用逗号分隔<input data-major="tags" data-array="true"></label>
           <div class="subhead"><h3>层次价格</h3><button class="btn ghost" id="addPrice">新增价格</button></div>
           <div id="prices">${(major.prices || []).map((price, index) => `<div class="price-row" data-price-index="${index}">
-            <label>层次<input data-price-field="level" value="${price.level || ""}"></label>
+            <label>层次<select data-price-field="level"><option value="专科" ${price.level === "专科" ? "selected" : ""}>专科</option><option value="本科" ${price.level === "本科" ? "selected" : ""}>本科</option></select></label>
             <label>简称头像<input data-price-field="avatar" value="${price.avatar || ""}"></label>
             <div class="price-image-cell">${imageBox("avatarImageUrl", "头像图片", price.avatarImageUrl, "price", "建议图片宽 400px，高 400px，单张不超过 4MB。", ` data-price-index="${index}"`)}</div>
             <label>价格<input data-price-field="price" value="${price.price || ""}"></label>

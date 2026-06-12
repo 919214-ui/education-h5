@@ -1,17 +1,13 @@
 <view class="page" wx:if="{{school}}">
-  <swiper wx:if="{{bannerSlides.length}}" class="school-hero" indicator-dots autoplay circular interval="3600">
-    <swiper-item wx:for="{{bannerSlides}}" wx:key="imageUrl">
-      <image class="hero-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
-      <view wx:if="{{item.title || item.desc}}" class="hero-caption">
-        <text class="caption-title">{{item.title}}</text>
-        <text class="caption-desc">{{item.desc}}</text>
-      </view>
-    </swiper-item>
-  </swiper>
-
   <view class="school-summary">
     <text class="school-name">{{school.name}}</text>
     <text class="school-desc">{{school.intro}}</text>
+  </view>
+
+  <view class="school-detail">
+    <text class="detail-title">学校介绍</text>
+    <rich-text wx:if="{{school.detailHtml}}" nodes="{{school.detailHtml}}"></rich-text>
+    <text wx:else class="school-desc">{{school.detail}}</text>
   </view>
 
   <view wx:for="{{groups}}" wx:key="level">

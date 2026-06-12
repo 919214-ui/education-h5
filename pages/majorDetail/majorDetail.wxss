@@ -2,49 +2,11 @@
   padding: 28rpx 28rpx 44rpx;
 }
 
-.hero,
 .price-card,
 .card {
   border-radius: 8rpx;
   background: #fff;
   box-shadow: 0 8rpx 28rpx rgba(39, 63, 60, .08);
-}
-
-.hero {
-  padding: 28rpx;
-  display: flex;
-  gap: 22rpx;
-}
-
-.cover {
-  width: 170rpx;
-  height: 210rpx;
-  border-radius: 8rpx;
-  background: linear-gradient(145deg, #fff0e7 0%, #e9f3f1 100%);
-  color: #b94438;
-  font-size: 68rpx;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.copy {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.path {
-  font-size: 22rpx;
-  color: #8a6a36;
-}
-
-.name {
-  margin-top: 14rpx;
-  font-size: 40rpx;
-  font-weight: 900;
 }
 
 .desc,

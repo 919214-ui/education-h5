@@ -2,8 +2,8 @@
   padding: 28rpx 28rpx 44rpx;
 }
 
-.school-hero,
 .school-summary,
+.school-detail,
 .major-card,
 .empty {
   border-radius: 8rpx;
@@ -11,44 +11,21 @@
   box-shadow: 0 8rpx 28rpx rgba(39, 63, 60, .08);
 }
 
-.school-hero {
-  height: 520rpx;
-  overflow: hidden;
-  background: #fff;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.hero-caption {
-  position: absolute;
-  left: 32rpx;
-  right: 32rpx;
-  bottom: 44rpx;
-  color: #fff;
-  text-shadow: 0 4rpx 22rpx rgba(0, 0, 0, .36);
-  display: flex;
-  flex-direction: column;
-}
-
-.caption-title {
-  font-size: 46rpx;
-  line-height: 1.18;
-  font-weight: 900;
-}
-
-.caption-desc {
-  margin-top: 12rpx;
-  font-size: 25rpx;
-  line-height: 1.45;
-}
-
 .school-summary {
+  padding: 28rpx;
+}
+
+.school-detail {
   margin-top: 22rpx;
   padding: 28rpx;
+  overflow: hidden;
+}
+
+.detail-title {
+  display: block;
+  margin-bottom: 14rpx;
+  font-size: 30rpx;
+  font-weight: 900;
 }
 
 .school-name {
