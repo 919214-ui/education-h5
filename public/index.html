@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学历提升商城</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f7f6; color: #172322; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button { border: 0; font: inherit; color: inherit; cursor: pointer; }
+    .page { max-width: 430px; min-height: 100vh; margin: 0 auto; padding: 14px 14px 28px; background-color: #f4f7f6; background-size: cover; background-position: top center; }
+    .hero, .banner { border-radius: 8px; color: #fff; background: linear-gradient(135deg, #b94438 0%, #d88435 48%, #1f5f5b 100%); background-size: cover; background-position: center; }
+    .hero { min-height: 150px; padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .hero-text { flex: 1; display: flex; flex-direction: column; gap: 9px; }
+    .eyebrow, .crumb { font-size: 12px; color: rgba(255,255,255,.8); }
+    .hero-title, .title { font-size: 23px; line-height: 1.18; font-weight: 900; }
+    .hero-desc, .desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .section-head { margin: 17px 0 9px; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
+    .section-title { font-size: 18px; font-weight: 900; }
+    .section-subtitle { font-size: 11px; color: #697a77; }
+    .scroll-row { display: flex; gap: 9px; overflow-x: auto; padding-bottom: 2px; scroll-snap-type: x mandatory; }
+    .teacher-mini, .media-card, .category, .school, .level, .major, .profile, .detail-card, .school-info { border-radius: 8px; background: #fff; box-shadow: 0 4px 14px rgba(39,63,60,.08); }
+    .teacher-mini, .media-card { flex: 0 0 118px; height: 92px; padding: 9px 5px; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-snap-align: start; overflow: hidden; }
+    .avatar { width: 38px; height: 38px; border-radius: 50%; background: #1f5f5b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; overflow: hidden; }
+    .media-icon { width: 38px; height: 38px; border-radius: 8px; background: #fff0e7; color: #b94438; display: flex; align-items: center; justify-content: center; font-weight: 900; overflow: hidden; }
+    .avatar img, .media-icon img, .profile-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .teacher-mini strong, .media-card strong { max-width: 100%; margin-top: 5px; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .teacher-mini span, .media-card span { max-width: 100%; margin-top: 2px; font-size: 10px; color: #596966; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .grid, .list, .levels { display: flex; flex-direction: column; gap: 9px; }
+    .category, .school { width: 100%; height: 118px; padding: 11px; display: flex; gap: 11px; text-align: left; overflow: hidden; }
+    .cover { width: 78px; height: 78px; aspect-ratio: 1 / 1; border-radius: 8px; background: #f3f0e8; color: #b94438; display: flex; align-items: center; justify-content: center; font-size: 29px; font-weight: 900; flex: 0 0 auto; overflow: hidden; }
+    .cover img, .intro-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .copy { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .name { font-size: 16px; font-weight: 900; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .badge, .tag { flex: 0 0 auto; padding: 3px 6px; border-radius: 999px; font-size: 10px; background: #fff0e7; color: #b94438; }
+    .muted { margin-top: 5px; font-size: 12px; line-height: 1.5; color: #596966; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .bottom { margin-top: auto; font-size: 11px; color: #8a6a36; }
+    .link { font-size: 12px; font-weight: 900; color: #1f5f5b; }
+    .banner { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .back { margin-bottom: 8px; padding: 7px 10px; border-radius: 8px; background: #fff; color: #1f5f5b; font-size: 12px; font-weight: 900; }
+    .top-actions { display: flex; gap: 8px; }
+    .school-info { margin-top: 11px; min-height: 210px; padding: 15px; display: block; overflow: auto; }
+    .intro-image { width: 100%; height: 115px; margin-bottom: 12px; border-radius: 8px; background: linear-gradient(135deg,#fff0e7 0%,#f7d7a2 48%,#e9f3f1 100%); color: #b94438; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; overflow: hidden; }
+    .level { position: relative; width: 100%; height: 155px; padding: 22px 15px 39px; display: flex; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg,#fff7ea 0%,#f3c26b 100%); overflow: hidden; }
+    .level[style] { background-size: cover; background-position: center; }
+    .level:nth-child(2) { background: linear-gradient(135deg,#fff3df 0%,#df9d54 100%); }
+    .level::before { content: ""; position: absolute; right: -27px; top: -27px; width: 90px; height: 90px; border-radius: 50%; background: rgba(255,255,255,.34); }
+    .level::after { content: ""; position: absolute; left: -22px; bottom: -30px; width: 95px; height: 95px; border-radius: 50%; background: rgba(185,68,56,.1); }
+    .level-title { position: relative; z-index: 1; font-size: 34px; font-weight: 900; color: #6b2f22; }
+    .level .link { position: absolute; left: 15px; right: 15px; bottom: 13px; color: #7b3d25; text-align: center; }
+    .major { height: 132px; padding: 13px; text-align: left; width: 100%; display: grid; grid-template-columns: 62px 1fr 96px; gap: 11px; align-items: center; overflow: hidden; }
+    .major-avatar { width: 62px; height: 62px; aspect-ratio: 1 / 1; border-radius: 8px; background: linear-gradient(135deg,#fff0e7,#f3c26b); color: #9b3d2f; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; overflow: hidden; }
+    .major-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .major-main { min-width: 0; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+    .major-side { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; gap: 7px; overflow: hidden; }
+    .major-head { display: contents; }
+    .price { max-width: 96px; flex: 0 0 auto; font-size: 24px; line-height: 1.05; font-weight: 900; color: #b94438; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .tags { display: flex; flex-wrap: nowrap; gap: 5px; margin-top: 9px; overflow: hidden; }
+    .service { margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .major .service { grid-column: 2 / 4; margin-top: -3px; overflow: hidden; }
+    .service span { flex: 1; font-size: 12px; color: #8a6a36; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .profile { padding: 15px; display: flex; gap: 12px; align-items: center; }
+    .profile .avatar, .profile-media { width: 60px; height: 60px; font-size: 24px; flex: 0 0 auto; }
+    .profile-media { border-radius: 8px; background: #fff0e7; color: #b94438; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+    .detail-card { margin-top: 11px; padding: 14px; }
+    .detail-title { display: block; font-size: 16px; font-weight: 900; }
+    .detail-text { display: block; margin-top: 8px; font-size: 13px; line-height: 1.65; color: #485956; }
+    .detail-image { width: 100%; margin-top: 10px; border-radius: 8px; overflow: hidden; background: #f3f0e8; }
+    .detail-image img { width: 100%; display: block; }
+    .product-detail { margin-top: 11px; border-radius: 8px; background: #fff; overflow: hidden; box-shadow: 0 4px 14px rgba(39,63,60,.08); }
+    .product-detail-head { padding: 14px; border-bottom: 1px solid #f0f3f2; font-size: 16px; font-weight: 900; }
+    .product-detail-text { padding: 14px; font-size: 13px; line-height: 1.75; color: #485956; white-space: pre-wrap; }
+    .product-detail-image img { width: 100%; display: block; }
+    .product-detail-body { padding: 0; font-size: 13px; line-height: 1.75; color: #485956; }
+    .product-detail-body p, .product-detail-body div { margin: 0; padding: 14px; }
+    .product-detail-body img { width: 100%; height: auto; display: block; margin: 0; }
+    .school-detail-body { margin-top: 8px; font-size: 13px; line-height: 1.75; color: #485956; }
+    .school-detail-body p, .school-detail-body div { margin: 0; padding: 0 0 12px; }
+    .school-detail-body img { width: 100%; height: auto; display: block; margin: 10px 0 0; border-radius: 8px; }
+    .showcase { margin-top: 11px; height: 150px; border-radius: 8px; background: linear-gradient(135deg,#b94438,#d88435); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 900; }
+    .search-card { margin-top: 12px; padding: 12px; border-radius: 8px; background: #fff; box-shadow: 0 4px 14px rgba(39,63,60,.08); }
+    .search-input { width: 100%; height: 42px; border: 1px solid #e3ece9; border-radius: 8px; padding: 0 12px; font: inherit; color: #172322; background: #f8faf9; outline: none; }
+    .search-input:focus { border-color: #d88435; background: #fff; }
+    .search-results { display: flex; flex-direction: column; gap: 8px; margin-top: 9px; }
+    .search-result { width: 100%; padding: 10px; border-radius: 8px; background: #fff7ea; text-align: left; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .result-copy { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+    .result-type { flex: 0 0 auto; font-size: 11px; font-weight: 900; color: #b94438; }
+    .empty { padding: 18px; border-radius: 8px; background: #fff; color: #697a77; text-align: center; }
+  </style>
+</head>
+<body>
+  <main class="page" id="app"></main>
+  <script>
+    let data = null;
+    const app = document.getElementById("app");
+    const current = {
+      view: "home",
+      categoryId: "",
+      schoolId: "",
+      level: "专科",
+      majorId: "",
+      teacherId: "",
+      mediaId: ""
+    };
+
+    const byId = (items, id) => (items || []).find((item) => item.id === id) || (items || [])[0];
+    const category = () => byId(data.categories, current.categoryId);
+    const school = () => byId(category().schools, current.schoolId);
+    const major = () => byId(school().majors, current.majorId);
+    const teacher = () => byId(data.teachers, current.teacherId);
+    const media = () => byId(data.mediaAccounts, current.mediaId);
+    const selectedPrice = () => (major().prices || []).find((item) => item.level === current.level) || (major().prices || [])[0];
+    const imageOrLabel = (url, label) => url ? `<img src="${url}" alt="">` : label;
+    const bg = (url, fallback = "") => url ? `style="background-image: linear-gradient(135deg, rgba(185,68,56,.72), rgba(31,95,91,.72)), url('${url.replace(/'/g, "%27")}')"` : fallback;
+    const rawBg = (url) => url ? `style="background-image: url('${url.replace(/'/g, "%27")}')"` : "";
+    const detailImage = (url) => url ? `<div class="detail-image"><img src="${url}" alt=""></div>` : "";
+    const schoolDetailFlow = (item) => {
+      if (item.detailHtml) return `<div class="school-detail-body">${item.detailHtml}</div>`;
+      return `<div class="school-detail-body">${item.detail ? `<p>${item.detail}</p>` : ""}${item.detailImageUrl ? `<img src="${item.detailImageUrl}" alt="">` : ""}</div>`;
+    };
+    const majorDetailFlow = (item) => {
+      if (item.detailHtml) {
+        return `<section class="product-detail"><div class="product-detail-head">专业详情介绍</div><div class="product-detail-body">${item.detailHtml}</div></section>`;
+      }
+      const blocks = Array.isArray(item.detailBlocks) && item.detailBlocks.length ? item.detailBlocks : [
+        ...(item.detail ? [{ type: "text", text: item.detail }] : []),
+        ...(item.detailImageUrl ? [{ type: "image", url: item.detailImageUrl }] : [])
+      ];
+      const body = blocks.filter((block) => block.type !== "image" || block.url).map((block) => block.type === "image" ? `<div class="product-detail-image"><img src="${block.url}" alt=""></div>` : `<div class="product-detail-text">${block.text || ""}</div>`).join("");
+      return `<section class="product-detail"><div class="product-detail-head">专业详情介绍</div>${body || `<div class="product-detail-text">暂无详情内容</div>`}</section>`;
+    };
+
+    function go(view) {
+      current.view = view;
+      window.scrollTo({ top: 0, behavior: "instant" });
+      render();
+    }
+
+    function allSearchItems() {
+      const rows = [];
+      (data.categories || []).forEach((cat) => {
+        rows.push({ type: "项目", title: cat.name, desc: cat.desc, view: "schools", categoryId: cat.id });
+        (cat.schools || []).forEach((sch) => {
+          rows.push({ type: "学校", title: sch.name, desc: `${cat.name} · ${sch.intro || ""}`, view: "levels", categoryId: cat.id, schoolId: sch.id });
+          (sch.majors || []).forEach((maj) => {
+            const price = (maj.prices || [])[0] || {};
+            rows.push({ type: "专业", title: maj.name, desc: `${cat.name} · ${sch.name} · ${price.price || "查看价格"}`, view: "major", categoryId: cat.id, schoolId: sch.id, majorId: maj.id, level: price.level || "专科" });
+          });
+        });
+      });
+      (data.teachers || []).forEach((item) => rows.push({ type: "规划师", title: item.name, desc: item.title || item.desc, view: "teacher", teacherId: item.id }));
+      (data.mediaAccounts || []).forEach((item) => rows.push({ type: "新媒体", title: item.name, desc: item.handle || item.desc, view: "media", mediaId: item.id }));
+      return rows;
+    }
+
+    function searchResults(keyword) {
+      const q = keyword.trim().toLowerCase();
+      if (!q) return [];
+      return allSearchItems().filter((item) => [item.type, item.title, item.desc].join(" ").toLowerCase().includes(q)).slice(0, 12);
+    }
+
+    function bindHomeSearch() {
+      const input = app.querySelector("#homeSearch");
+      const box = app.querySelector("#homeSearchResults");
+      const draw = () => {
+        const rows = searchResults(input.value);
+        box.innerHTML = input.value.trim() ? (rows.length ? rows.map((item, index) => `<button class="search-result" data-search-index="${index}"><span class="result-copy"><strong>${item.title}</strong><span class="muted">${item.desc || ""}</span></span><span class="result-type">${item.type}</span></button>`).join("") : `<div class="empty">没有找到相关产品</div>`) : "";
+        box.querySelectorAll("[data-search-index]").forEach((button) => {
+          button.onclick = () => {
+            const item = rows[Number(button.dataset.searchIndex)];
+            current.categoryId = item.categoryId || current.categoryId;
+            current.schoolId = item.schoolId || current.schoolId;
+            current.majorId = item.majorId || current.majorId;
+            current.level = item.level || current.level;
+            current.teacherId = item.teacherId || current.teacherId;
+            current.mediaId = item.mediaId || current.mediaId;
+            go(item.view);
+          };
+        });
+      };
+      input.oninput = draw;
+    }
+
+    function renderHome() {
+      app.style.backgroundImage = data.org.backgroundImageUrl ? `url('${data.org.backgroundImageUrl.replace(/'/g, "%27")}')` : "";
+      app.innerHTML = `
+        <section class="hero" ${bg(data.org.bannerImageUrl)}>
+          <div class="hero-text"><strong class="hero-title">${data.org.name}</strong><span class="hero-desc">${data.org.desc}</span></div>
+        </section>
+        <section class="search-card">
+          <input class="search-input" id="homeSearch" placeholder="搜索项目、学校、专业、老师">
+          <div class="search-results" id="homeSearchResults"></div>
+        </section>
+        <div class="section-head"><strong class="section-title">学历规划师团队</strong><span class="section-subtitle">滑动查看更多</span></div>
+        <section class="scroll-row">${data.teachers.map((item) => `<button class="teacher-mini" data-id="${item.id}"><div class="avatar">${imageOrLabel(item.avatarUrl, item.avatar)}</div><strong>${item.name}</strong><span>${item.title}</span></button>`).join("")}</section>
+        <div class="section-head"><strong class="section-title">新媒体账号</strong><span class="section-subtitle">滑动查看更多</span></div>
+        <section class="scroll-row">${data.mediaAccounts.map((item) => `<button class="media-card" data-id="${item.id}"><div class="media-icon">${imageOrLabel(item.avatarUrl, item.avatar)}</div><strong>${item.name}</strong><span>${item.handle}</span></button>`).join("")}</section>
+        <div class="section-head"><strong class="section-title">选择项目</strong><span class="section-subtitle">进入学校列表</span></div>
+        <section class="grid">${data.categories.map((item) => `<button class="category" data-id="${item.id}"><div class="cover">${imageOrLabel(item.coverImageUrl, item.cover)}</div><div class="copy"><div class="row"><strong class="name">${item.name}</strong><span class="badge">${item.badge}</span></div><span class="muted">${item.desc}</span><div class="row bottom"><span>${item.schools.length}所学校可选</span><span class="link">进入</span></div></div></button>`).join("")}</section>
+      `;
+      app.querySelectorAll(".teacher-mini").forEach((button) => button.onclick = () => { current.teacherId = button.dataset.id; go("teacher"); });
+      app.querySelectorAll(".media-card").forEach((button) => button.onclick = () => { current.mediaId = button.dataset.id; go("media"); });
+      app.querySelectorAll(".category").forEach((button) => button.onclick = () => { current.categoryId = button.dataset.id; current.schoolId = ""; go("schools"); });
+      bindHomeSearch();
+    }
+
+    function renderTeacher() {
+      const item = teacher();
+      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="avatar">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.title}</span><span class="muted">${item.desc}</span></div></section><section class="detail-card"><strong class="detail-title">详细介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">擅长方向</strong><div class="tags">${(item.strengths || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("home");
+    }
+
+    function renderMedia() {
+      const item = media();
+      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="profile-media">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.handle}</span><span class="muted">${item.desc}</span></div></section><section class="showcase">${item.name}展示区</section><section class="detail-card"><strong class="detail-title">账号介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">内容方向</strong><div class="tags">${(item.metrics || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("home");
+    }
+
+    function renderSchools() {
+      const item = category();
+      app.innerHTML = `<button class="back">返回首页</button><section class="banner" ${bg(item.bannerImageUrl || item.coverImageUrl)}><span class="crumb">首页 / ${item.name}</span><strong class="title">${item.name}</strong><span class="desc">${item.desc}</span></section><div class="section-head"><strong class="section-title">选择学校</strong><span class="section-subtitle">只展示学校</span></div><section class="list">${item.schools.length ? item.schools.map((school) => `<button class="school" data-id="${school.id}"><div class="cover">${imageOrLabel(school.imageUrl, "校")}</div><div class="copy"><div class="row"><strong class="name">${school.name}</strong><span class="badge">${school.tag}</span></div><span class="muted">${school.intro}</span><div class="row bottom"><span>${school.majors.length}个专业方向</span><span class="link">选层次</span></div></div></button>`).join("") : `<div class="empty">该项目还没有录入学校</div>`}</section>`;
+      app.querySelector(".back").onclick = () => go("home");
+      app.querySelectorAll(".school").forEach((button) => button.onclick = () => { current.schoolId = button.dataset.id; go("levels"); });
+    }
+
+    function renderLevels() {
+      const item = school();
+      app.innerHTML = `<div class="top-actions"><button class="back">返回学校</button></div><section class="banner" ${bg(item.bannerImageUrl || item.imageUrl)}><span class="crumb">${category().name}</span><strong class="title">${item.name}</strong><span class="desc">${item.intro}</span></section><section class="school-info" style="max-height:${item.detailBoxHeight || 420}px"><strong class="name">学校介绍</strong>${schoolDetailFlow(item)}</section><div class="section-head"><strong class="section-title">选择报读层次</strong><span class="section-subtitle">下一步看专业价格</span></div><section class="levels"><button class="level" data-level="专科" ${rawBg(item.juniorLevelImageUrl)}><strong class="level-title">专科</strong><span class="link">查看专业</span></button><button class="level" data-level="本科" ${rawBg(item.bachelorLevelImageUrl)}><strong class="level-title">本科</strong><span class="link">查看专业</span></button></section>`;
+      app.querySelector(".back").onclick = () => go("schools");
+      app.querySelectorAll(".level").forEach((button) => button.onclick = () => { current.level = button.dataset.level; go("majors"); });
+    }
+
+    function renderMajors() {
+      const item = school();
+      const majors = item.majors.map((major) => ({ ...major, selectedPrice: (major.prices || []).find((price) => price.level === current.level) })).filter((major) => major.selectedPrice);
+      app.innerHTML = `<button class="back">返回层次</button><section class="banner" ${bg(item.majorBannerImageUrl || item.bannerImageUrl || item.imageUrl)}><span class="crumb">${category().name} / ${item.name}</span><strong class="title">${current.level}专业选择</strong><span class="desc">点击专业进入详情介绍。</span></section><div class="section-head"><strong class="section-title">专业与价格</strong><span class="section-subtitle">${majors.length}个可选</span></div><section class="list">${majors.length ? majors.map((major) => `<button class="major" data-id="${major.id}"><div class="major-avatar">${imageOrLabel(major.selectedPrice.avatarImageUrl, major.selectedPrice.avatar || major.name.slice(0, 1))}</div><div class="major-main"><strong class="name">${major.name}</strong><span class="muted">${major.desc}</span><div class="tags">${(major.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></div><div class="major-side"><strong class="price">${major.selectedPrice.price || "咨询"}</strong><span class="link">进入详情</span></div><div class="service"><span>${major.selectedPrice.service || ""}</span></div></button>`).join("") : `<div class="empty">该层次还没有录入专业</div>`}</section>`;
+      app.querySelector(".back").onclick = () => go("levels");
+      app.querySelectorAll(".major").forEach((button) => button.onclick = () => { current.majorId = button.dataset.id; go("major"); });
+    }
+
+    function renderMajor() {
+      const item = major();
+      const price = selectedPrice();
+      app.innerHTML = `<button class="back">返回专业</button><section class="banner" ${bg(item.bannerImageUrl || school().majorBannerImageUrl || school().bannerImageUrl || school().imageUrl)}><span class="crumb">${category().name} / ${school().name} / ${current.level}</span><strong class="title">${item.name}</strong><span class="desc">${item.desc}</span></section><section class="detail-card"><strong class="detail-title">当前价格</strong><strong class="price">${price.price}</strong><span class="detail-text">${price.service}</span></section>${majorDetailFlow(item)}<section class="detail-card"><strong class="detail-title">适合人群</strong><div class="tags">${(item.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("majors");
+    }
+
+    function render() {
+      if (current.view === "home") renderHome();
+      if (current.view === "teacher") renderTeacher();
+      if (current.view === "media") renderMedia();
+      if (current.view === "schools") renderSchools();
+      if (current.view === "levels") renderLevels();
+      if (current.view === "majors") renderMajors();
+      if (current.view === "major") renderMajor();
+    }
+
+    fetch("/api/site")
+      .then((res) => res.json())
+      .then((site) => {
+        data = site;
+        current.categoryId = data.categories[0]?.id || "";
+        render();
+      })
+      .catch(() => {
+        app.innerHTML = `<div class="empty">资料读取失败，请检查服务器是否启动。</div>`;
+      });
+  </script>
+</body>
+</html>

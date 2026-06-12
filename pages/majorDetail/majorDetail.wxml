@@ -1,0 +1,28 @@
+<view class="page" wx:if="{{major}}">
+  <view class="hero">
+    <view class="cover">专</view>
+    <view class="copy">
+      <text class="path">{{category.name}} / {{school.name}} / {{level}}</text>
+      <text class="name">{{major.name}}</text>
+      <text class="desc">{{major.desc}}</text>
+    </view>
+  </view>
+
+  <view class="price-card">
+    <text class="price-label">当前价格</text>
+    <text class="price">{{selectedPrice.price}}</text>
+    <text class="service">{{selectedPrice.service}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">专业详情介绍</text>
+    <text class="detail">{{major.detail}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">适合人群</text>
+    <view class="chips">
+      <text wx:for="{{major.tags}}" wx:key="*this" class="chip">{{item}}</text>
+    </view>
+  </view>
+</view>

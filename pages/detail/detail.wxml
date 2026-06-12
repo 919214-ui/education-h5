@@ -1,0 +1,54 @@
+<view class="page" wx:if="{{major}}">
+  <view class="product-hero">
+    <view class="cover">专</view>
+    <view class="hero-copy">
+      <text class="path">{{category.name}} / {{school.name}}</text>
+      <text class="name">{{major.name}}</text>
+      <text class="short">{{major.desc}}</text>
+    </view>
+  </view>
+
+  <view class="price-panel">
+    <text class="panel-title">选择层次</text>
+    <view class="option-list">
+      <view
+        wx:for="{{major.prices}}"
+        wx:key="level"
+        class="price-option {{selectedPriceIndex === index ? 'active' : ''}}"
+        data-index="{{index}}"
+        bindtap="selectPrice"
+      >
+        <view>
+          <text class="level">{{item.level}}</text>
+          <text class="service">{{item.service}}</text>
+        </view>
+        <text class="price">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail-card">
+    <text class="detail-title">专业介绍</text>
+    <text class="detail-text">{{major.detail}}</text>
+  </view>
+
+  <view class="detail-card">
+    <text class="detail-title">服务包含</text>
+    <view class="service-grid">
+      <text class="service-item">报考规划</text>
+      <text class="service-item">资料审核</text>
+      <text class="service-item">学习提醒</text>
+      <text class="service-item">考试节点</text>
+      <text class="service-item">毕业跟进</text>
+      <text class="service-item">老师答疑</text>
+    </view>
+  </view>
+
+  <view class="buy-bar">
+    <view>
+      <text class="bar-label">当前选择</text>
+      <text class="bar-price">{{selectedPrice.level}} {{selectedPrice.price}}</text>
+    </view>
+    <button class="buy-button" bindtap="callConsultant">立即咨询</button>
+  </view>
+</view>

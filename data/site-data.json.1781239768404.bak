@@ -1,0 +1,911 @@
+{
+  "org": {
+    "name": "新火教育学校",
+    "desc": "成人学历提升产品商城，先选项目，再选学校、层次和专业。",
+    "bannerImageUrl": "/uploads/1781239729372-dfb8ec6be0a2.jpg",
+    "backgroundImageUrl": ""
+  },
+  "teachers": [
+    {
+      "id": "li",
+      "avatar": "李",
+      "avatarUrl": "",
+      "name": "李老师",
+      "title": "小自考规划",
+      "desc": "熟悉四川、湖北小自考院校和专业搭配。",
+      "detail": "长期负责小自考项目咨询，擅长根据学员基础、目标专业、拿证时间和预算匹配方案。",
+      "strengths": [
+        "四川小自考",
+        "湖北小自考",
+        "专本衔接"
+      ]
+    },
+    {
+      "id": "wang",
+      "avatar": "王",
+      "avatarUrl": "",
+      "name": "王老师",
+      "title": "国开规划",
+      "desc": "擅长在职学员稳妥拿证路径和预算匹配。",
+      "detail": "专注开放大学和在职学历规划，适合工作时间不固定、希望流程更稳定的学员。",
+      "strengths": [
+        "国开项目",
+        "在职提升",
+        "稳妥拿证"
+      ]
+    },
+    {
+      "id": "chen",
+      "avatar": "陈",
+      "avatarUrl": "",
+      "name": "陈老师",
+      "title": "助学自考",
+      "desc": "负责学习计划、考期提醒和毕业节点跟进。",
+      "detail": "负责助学自考学习路径、考期安排和毕业节点跟进。",
+      "strengths": [
+        "助学自考",
+        "学习计划",
+        "考期提醒"
+      ]
+    },
+    {
+      "id": "teacher-mqaf3yue-u7vh",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新老师",
+      "title": "学历规划师",
+      "desc": "",
+      "detail": "",
+      "strengths": []
+    },
+    {
+      "id": "teacher-mqaf3z0g-1sao",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新老师",
+      "title": "学历规划师",
+      "desc": "",
+      "detail": "",
+      "strengths": []
+    }
+  ],
+  "mediaAccounts": [
+    {
+      "id": "douyin",
+      "avatar": "抖",
+      "avatarUrl": "",
+      "name": "抖音",
+      "handle": "华升学历规划",
+      "desc": "短视频讲解热门专业、院校选择和报名节点。",
+      "detail": "适合展示老师出镜讲解、学员常见问题、报考时间提醒和专业选择建议。",
+      "metrics": [
+        "专业科普",
+        "直播咨询",
+        "报名提醒"
+      ]
+    },
+    {
+      "id": "redbook",
+      "avatar": "红",
+      "avatarUrl": "",
+      "name": "小红书",
+      "handle": "学历提升规划笔记",
+      "desc": "图文笔记展示真实咨询场景和避坑指南。",
+      "detail": "适合围绕学校、专业、价格、流程、避坑经验沉淀笔记。",
+      "metrics": [
+        "图文笔记",
+        "案例拆解",
+        "私信咨询"
+      ]
+    },
+    {
+      "id": "channels",
+      "avatar": "视",
+      "avatarUrl": "",
+      "name": "视频号",
+      "handle": "华升学历服务号",
+      "desc": "承接微信生态咨询、直播和私域转化。",
+      "detail": "适合和小程序、企业微信、社群联动，展示直播回放、政策解读和规划师答疑。",
+      "metrics": [
+        "微信生态",
+        "直播回放",
+        "私域承接"
+      ]
+    },
+    {
+      "id": "media-mqaf3v5v-v4dk",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3ver-y0oa",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vk2-q9z9",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vp2-yn9i",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vu8-llch",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vzd-gdgr",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3w4o-h49p",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "sc-self",
+      "name": "四川小自考",
+      "badge": "热门",
+      "cover": "川",
+      "coverImageUrl": "",
+      "desc": "统考科目少，校考安排灵活。",
+      "schools": [
+        {
+          "id": "scu",
+          "name": "四川大学",
+          "tag": "综合类院校",
+          "intro": "综合实力强，适合重视院校品牌和专业实用性的学员。",
+          "imageLabel": "川大",
+          "imageUrl": "",
+          "detail": "四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。",
+          "majors": [
+            {
+              "id": "admin",
+              "name": "行政管理",
+              "desc": "适合行政、人事、事业单位备考。",
+              "tags": [
+                "文职适配",
+                "管理方向"
+              ],
+              "detail": "课程通用性强，适合提升学历门槛和基层管理能力。",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "¥6,980",
+                  "service": "报名规划、资料审核、学习提醒"
+                },
+                {
+                  "level": "本科",
+                  "price": "¥8,980",
+                  "service": "统考规划、校考提醒、论文指导"
+                }
+              ]
+            },
+            {
+              "id": "law",
+              "name": "法学",
+              "desc": "适合合规、行政、基层法律服务方向。",
+              "tags": [
+                "本科推荐",
+                "岗位拓展"
+              ],
+              "detail": "适合需要法律基础、合规意识或行政管理能力的学员。",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "¥7,280",
+                  "service": "基础课程规划、考试节奏提醒"
+                },
+                {
+                  "level": "本科",
+                  "price": "¥9,280",
+                  "service": "科目规划、论文指导、毕业跟进"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "uestc",
+          "name": "电子科技大学",
+          "tag": "理工类院校",
+          "intro": "理工背景突出，适合技术、互联网、信息化岗位人群。",
+          "imageLabel": "成电",
+          "imageUrl": "",
+          "detail": "电子科技大学方向更适合理工、信息化、管理岗位人群。",
+          "majors": [
+            {
+              "id": "computer",
+              "name": "计算机科学与技术",
+              "desc": "适合IT、运维、产品、信息化岗位。",
+              "tags": [
+                "理工热门",
+                "技术岗位"
+              ],
+              "detail": "专业应用面广，适合技术岗和信息化管理方向。",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "¥7,680",
+                  "service": "入门学习规划、题库资料"
+                },
+                {
+                  "level": "本科",
+                  "price": "¥9,680",
+                  "service": "统考安排、实践课提醒、论文指导"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "school-mqaf3edn-702r",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3etf-cwkz",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3fbg-0pak",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3fhh-fcs7",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3fmv-59xw",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3ft9-pb6g",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3hsn-weoq",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3i01-eb5g",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3i5e-pb99",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3iae-e7gx",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf3ieq-rgiv",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": [
+            {
+              "id": "major-mqaf3kvk-wr2j",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3l10-kr64",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3l5j-k7xs",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3la3-xmav",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3lek-2wcu",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3ljj-d27x",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3lnu-8c12",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3ls7-z8tb",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3n4o-lkvq",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3na5-5s08",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3nfj-03j0",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3nkr-94qw",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3npf-srte",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3nub-rqyi",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3nz7-xc7t",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3o48-4h2m",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3o9d-3506",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3oeb-z77s",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            },
+            {
+              "id": "major-mqaf3oj3-46a0",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hb-self",
+      "name": "湖北小自考",
+      "badge": "院校多",
+      "cover": "鄂",
+      "coverImageUrl": "",
+      "desc": "院校选择多，专业实用。",
+      "schools": []
+    },
+    {
+      "id": "aid-self",
+      "name": "助学自考",
+      "badge": "带学",
+      "cover": "助",
+      "coverImageUrl": "",
+      "desc": "课程、题库、学习计划和督学服务。",
+      "schools": []
+    },
+    {
+      "id": "open-edu",
+      "name": "国开项目",
+      "badge": "稳妥",
+      "cover": "国",
+      "coverImageUrl": "",
+      "desc": "线上学习为主，适合工作忙的学员。",
+      "schools": []
+    },
+    {
+      "id": "category-mqaf3s6t-k9ph",
+      "name": "新项目",
+      "badge": "",
+      "cover": "新",
+      "coverImageUrl": "",
+      "desc": "",
+      "schools": []
+    },
+    {
+      "id": "category-mqaf3scu-ynca",
+      "name": "新项目",
+      "badge": "",
+      "cover": "新",
+      "coverImageUrl": "",
+      "desc": "",
+      "schools": []
+    },
+    {
+      "id": "category-mqaf3sjc-cbt9",
+      "name": "新项目",
+      "badge": "",
+      "cover": "新",
+      "coverImageUrl": "",
+      "desc": "",
+      "schools": []
+    },
+    {
+      "id": "category-mqaf3swz-z28t",
+      "name": "新项目",
+      "badge": "",
+      "cover": "新",
+      "coverImageUrl": "",
+      "desc": "",
+      "schools": []
+    },
+    {
+      "id": "category-mqaf3t2c-wxwf",
+      "name": "新项目",
+      "badge": "",
+      "cover": "新",
+      "coverImageUrl": "",
+      "desc": "",
+      "schools": [
+        {
+          "id": "school-mqaf4zey-5934",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf4zkp-co9g",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf50xa-stdx",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf513u-37fm",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf519n-0sga",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf51eo-ccdp",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf51k9-4xzx",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        },
+        {
+          "id": "school-mqaf51pw-5pu9",
+          "name": "新学校",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "校",
+          "imageUrl": "",
+          "detail": "",
+          "majors": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+{
+  "org": {
+    "name": "新火教育学校",
+    "desc": "成人学历提升产品商城，先选项目，再选学校、层次和专业。",
+    "bannerImageUrl": "/uploads/1781247459015-75be87727252.png",
+    "backgroundImageUrl": ""
+  },
+  "teachers": [
+    {
+      "id": "li",
+      "avatar": "李",
+      "avatarUrl": "/uploads/1781239766994-7488cd076a9e.jpg",
+      "name": "李老师",
+      "title": "小自考规划",
+      "desc": "熟悉四川、湖北小自考院校和专业搭配。",
+      "detail": "长期负责小自考项目咨询，擅长根据学员基础、目标专业、拿证时间和预算匹配方案。",
+      "strengths": [
+        "四川小自考",
+        "湖北小自考",
+        "专本衔接"
+      ]
+    },
+    {
+      "id": "wang",
+      "avatar": "王",
+      "avatarUrl": "",
+      "name": "王老师",
+      "title": "国开规划",
+      "desc": "擅长在职学员稳妥拿证路径和预算匹配。",
+      "detail": "专注开放大学和在职学历规划，适合工作时间不固定、希望流程更稳定的学员。",
+      "strengths": [
+        "国开项目",
+        "在职提升",
+        "稳妥拿证"
+      ]
+    },
+    {
+      "id": "chen",
+      "avatar": "陈",
+      "avatarUrl": "",
+      "name": "陈老师",
+      "title": "助学自考",
+      "desc": "负责学习计划、考期提醒和毕业节点跟进。",
+      "detail": "负责助学自考学习路径、考期安排和毕业节点跟进。",
+      "strengths": [
+        "助学自考",
+        "学习计划",
+        "考期提醒"
+      ]
+    },
+    {
+      "id": "teacher-mqaf3yue-u7vh",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新老师",
+      "title": "学历规划师",
+      "desc": "",
+      "detail": "",
+      "strengths": []
+    },
+    {
+      "id": "teacher-mqaf3z0g-1sao",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新老师",
+      "title": "学历规划师",
+      "desc": "",
+      "detail": "",
+      "strengths": []
+    }
+  ],
+  "mediaAccounts": [
+    {
+      "id": "douyin",
+      "avatar": "抖",
+      "avatarUrl": "",
+      "name": "抖音",
+      "handle": "华升学历规划",
+      "desc": "短视频讲解热门专业、院校选择和报名节点。",
+      "detail": "适合展示老师出镜讲解、学员常见问题、报考时间提醒和专业选择建议。",
+      "metrics": [
+        "专业科普",
+        "直播咨询",
+        "报名提醒"
+      ]
+    },
+    {
+      "id": "redbook",
+      "avatar": "红",
+      "avatarUrl": "",
+      "name": "小红书",
+      "handle": "学历提升规划笔记",
+      "desc": "图文笔记展示真实咨询场景和避坑指南。",
+      "detail": "适合围绕学校、专业、价格、流程、避坑经验沉淀笔记。",
+      "metrics": [
+        "图文笔记",
+        "案例拆解",
+        "私信咨询"
+      ]
+    },
+    {
+      "id": "channels",
+      "avatar": "视",
+      "avatarUrl": "",
+      "name": "视频号",
+      "handle": "华升学历服务号",
+      "desc": "承接微信生态咨询、直播和私域转化。",
+      "detail": "适合和小程序、企业微信、社群联动，展示直播回放、政策解读和规划师答疑。",
+      "metrics": [
+        "微信生态",
+        "直播回放",
+        "私域承接"
+      ]
+    },
+    {
+      "id": "media-mqaf3v5v-v4dk",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3ver-y0oa",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vk2-q9z9",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vp2-yn9i",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vu8-llch",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3vzd-gdgr",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    },
+    {
+      "id": "media-mqaf3w4o-h49p",
+      "avatar": "新",
+      "avatarUrl": "",
+      "name": "新媒体",
+      "handle": "",
+      "desc": "",
+      "detail": "",
+      "metrics": []
+    }
+  ],
+  "categories": [
+    {
+      "id": "sc-self",
+      "name": "四川小自考",
+      "badge": "热门",
+      "cover": "川",
+      "coverImageUrl": "/uploads/1781250512561-fa2d20c29fc5.jpg",
+      "desc": "统考科目少，校考安排灵活。",
+      "schools": [
+        {
+          "id": "scu",
+          "name": "四川大学",
+          "tag": "综合类院校",
+          "intro": "综合实力强，适合重视院校品牌和专业实用性的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。",
+          "imageLabel": "川大",
+          "imageUrl": "/uploads/1781250567757-ed31b6cdd687.jpg",
+          "detail": "四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。",
+          "majors": [
+            {
+              "id": "major-mqaksf1v-t7pn",
+              "name": "工商管理",
+              "desc": "四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。",
+              "tags": [],
+              "detail": "",
+              "detailImageUrl": "",
+              "detailBlocks": [],
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "1000",
+                  "service": ""
+                }
+              ],
+              "detailHtml": "<img src=\"/uploads/1781248954435-5230ec04d42d.jpg\" alt=\"\"><img src=\"/uploads/1781248961697-404d1e16569a.jpg\" alt=\"\">",
+              "bannerImageUrl": "/uploads/1781250621213-bf96ab4d581a.jpg"
+            },
+            {
+              "id": "major-mqaksi64-3is7",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "detailImageUrl": "",
+              "detailBlocks": [],
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ],
+              "detailHtml": ""
+            },
+            {
+              "id": "major-mqaksu69-pujo",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "detailImageUrl": "",
+              "detailBlocks": [],
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "",
+                  "service": ""
+                },
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            }
+          ],
+          "detailImageUrl": "/uploads/1781247083640-9f78c247e325.jpg",
+          "detailHtml": "<p>四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。</p><img src=\"/uploads/1781247083640-9f78c247e325.jpg\" alt=\"\">",
+          "bannerImageUrl": "/uploads/1781250595433-fe34f7e959b7.jpg"
+        },
+        {
+          "id": "uestc",
+          "name": "电子科技大学",
+          "tag": "理工类院校",
+          "intro": "理工背景突出，适合技术、互联网、信息化岗位人群。",
+          "imageLabel": "成电",
+          "imageUrl": "",
+          "detail": "电子科技大学方向更适合理工、信息化、管理岗位人群。",
+          "majors": [
+            {
+              "id": "computer",
+              "name": "计算机科学与技术",
+              "desc": "适合IT、运维、产品、信息化岗位。",
+              "tags": [
+                "理工热门",
+                "技术岗位"
+              ],
+              "detail": "专业应用面广，适合技术岗和信息化管理方向。",
+              "prices": [
+                {
+                  "level": "专科",
+                  "price": "¥7,680",
+                  "service": "入门学习规划、题库资料"
+                },
+                {
+                  "level": "本科",
+                  "price": "¥9,680",
+                  "service": "统考安排、实践课提醒、论文指导"
+                }
+              ],
+              "detailBlocks": [
+                {
+                  "type": "text",
+                  "text": "专业应用面广，适合技术岗和信息化管理方向。"
+                }
+              ],
+              "detailHtml": "<p>专业应用面广，适合技术岗和信息化管理方向。</p>"
+            }
+          ]
+        }
+      ],
+      "bannerImageUrl": "/uploads/1781250519041-8b960d7676e6.jpg"
+    },
+    {
+      "id": "hb-self",
+      "name": "湖北小自考",
+      "badge": "院校多",
+      "cover": "鄂",
+      "coverImageUrl": "",
+      "desc": "院校选择多，专业实用。",
+      "schools": [
+        {
+          "id": "school-mqaiqgsy-57fb",
+          "name": "四川职业技术学院",
+          "tag": "",
+          "intro": "",
+          "imageLabel": "",
+          "imageUrl": "/uploads/1781244160470-6c2dd417f030.jpg",
+          "detail": "",
+          "majors": [
+            {
+              "id": "major-mqaiqo5z-2j3k",
+              "name": "新专业",
+              "desc": "",
+              "tags": [],
+              "detail": "",
+              "prices": [
+                {
+                  "level": "本科",
+                  "price": "",
+                  "service": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aid-self",
+      "name": "助学自考",
+      "badge": "带学",
+      "cover": "助",
+      "coverImageUrl": "",
+      "desc": "课程、题库、学习计划和督学服务。",
+      "schools": []
+    },
+    {
+      "id": "open-edu",
+      "name": "国开项目",
+      "badge": "稳妥",
+      "cover": "国",
+      "coverImageUrl": "",
+      "desc": "线上学习为主，适合工作忙的学员。",
+      "schools": []
+    }
+  ]
+}

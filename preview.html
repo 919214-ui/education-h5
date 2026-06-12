@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>学历提升商城预览</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f4f7f6; color: #172322; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button { border: 0; font: inherit; color: inherit; cursor: pointer; }
+    .phone { max-width: 430px; min-height: 100vh; margin: 0 auto; padding: 14px 14px 28px; background: #f4f7f6; }
+    .hero, .banner { border-radius: 8px; color: #fff; background: linear-gradient(135deg, #b94438 0%, #d88435 48%, #1f5f5b 100%); }
+    .hero { min-height: 178px; padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .hero-text { flex: 1; display: flex; flex-direction: column; gap: 9px; }
+    .eyebrow, .crumb { font-size: 12px; color: rgba(255,255,255,.8); }
+    .hero-title, .title { font-size: 23px; line-height: 1.18; font-weight: 900; }
+    .hero-desc, .desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .coupon { width: 76px; height: 92px; border-radius: 8px; background: rgba(255,255,255,.95); color: #b94438; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 22px rgba(50,27,18,.2); }
+    .coupon small { color: #7b5b2a; font-weight: 700; }
+    .coupon strong { margin-top: 4px; font-size: 21px; font-weight: 900; }
+    .section-head { margin: 17px 0 9px; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
+    .section-title { font-size: 18px; font-weight: 900; }
+    .section-subtitle { font-size: 11px; color: #697a77; }
+    .teacher-row, .media-list, .grid, .list, .levels { display: flex; gap: 9px; }
+    .teacher-row { flex-direction: row; }
+    .grid, .list, .levels { flex-direction: column; }
+    .card, .teacher-mini, .media-card, .school, .level, .major, .profile, .detail-card, .school-info { border-radius: 8px; background: #fff; box-shadow: 0 4px 14px rgba(39,63,60,.08); }
+    .teacher-mini { flex: 1; min-height: 78px; padding: 9px 5px; display: flex; flex-direction: column; align-items: center; }
+    .avatar { width: 37px; height: 37px; border-radius: 50%; background: #1f5f5b; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; }
+    .teacher-mini strong { margin-top: 5px; font-size: 13px; }
+    .teacher-mini span { margin-top: 2px; font-size: 10px; color: #596966; }
+    .media-card { flex: 1; min-height: 78px; padding: 9px 5px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .media-icon { width: 39px; height: 39px; border-radius: 8px; background: #fff0e7; color: #b94438; display: flex; align-items: center; justify-content: center; font-weight: 900; flex: 0 0 auto; }
+    .category-copy, .school-copy, .major-copy, .profile-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .media-name, .name { font-size: 16px; font-weight: 900; }
+    .media-desc, .category-desc, .school-desc, .level-desc, .major-desc, .detail-text, .profile-desc { margin-top: 5px; font-size: 12px; line-height: 1.5; color: #596966; }
+    .category, .school { width: 100%; padding: 11px; display: flex; gap: 11px; text-align: left; }
+    .cover { width: 72px; height: 88px; border-radius: 8px; background: #f3f0e8; color: #b94438; display: flex; align-items: center; justify-content: center; font-size: 29px; font-weight: 900; flex: 0 0 auto; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .badge, .tag { flex: 0 0 auto; padding: 3px 6px; border-radius: 999px; font-size: 10px; background: #fff0e7; color: #b94438; }
+    .bottom { margin-top: auto; font-size: 11px; color: #8a6a36; }
+    .link { font-size: 12px; font-weight: 900; color: #1f5f5b; }
+    .banner { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .back { margin-bottom: 8px; padding: 7px 10px; border-radius: 8px; background: #fff; color: #1f5f5b; font-size: 12px; font-weight: 900; }
+    .school .cover { background: #e9f3f1; color: #1f5f5b; }
+    .school-info { margin-top: 11px; min-height: 210px; padding: 15px; display: block; }
+    .intro-image { width: 100%; height: 115px; margin-bottom: 12px; border-radius: 8px; background: linear-gradient(135deg,#fff0e7 0%,#f7d7a2 48%,#e9f3f1 100%); color: #b94438; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 900; }
+    .level { position: relative; width: 100%; min-height: 155px; padding: 22px 15px 39px; display: flex; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg,#fff7ea 0%,#f3c26b 100%); overflow: hidden; }
+    .level:nth-child(2) { background: linear-gradient(135deg,#fff3df 0%,#df9d54 100%); }
+    .level::before { content: ""; position: absolute; right: -27px; top: -27px; width: 90px; height: 90px; border-radius: 50%; background: rgba(255,255,255,.34); }
+    .level::after { content: ""; position: absolute; left: -22px; bottom: -30px; width: 95px; height: 95px; border-radius: 50%; background: rgba(185,68,56,.1); }
+    .level-title { position: relative; z-index: 1; font-size: 34px; font-weight: 900; color: #6b2f22; }
+    .major { padding: 14px; text-align: left; width: 100%; }
+    .major-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .price { flex: 0 0 auto; font-size: 20px; font-weight: 900; color: #b94438; }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+    .tag { background: #f3f0e8; color: #66543b; }
+    .service { margin-top: 10px; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+    .service span { flex: 1; font-size: 12px; color: #8a6a36; }
+    .profile { padding: 15px; display: flex; gap: 12px; align-items: center; }
+    .profile .avatar, .profile-media { width: 60px; height: 60px; font-size: 24px; flex: 0 0 auto; }
+    .profile-media { border-radius: 8px; background: #fff0e7; color: #b94438; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+    .detail-card { margin-top: 11px; padding: 14px; }
+    .detail-title { display: block; font-size: 16px; font-weight: 900; }
+    .showcase { margin-top: 11px; height: 150px; border-radius: 8px; background: linear-gradient(135deg,#b94438,#d88435); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 900; }
+    .consult { width: 76px; height: 34px; border-radius: 8px; background: #b94438; color: #fff; font-size: 13px; font-weight: 900; }
+    .bottom-title, .bottom-subtitle { display: block; }
+    .bottom-title { font-size: 14px; font-weight: 900; }
+    .bottom-subtitle { margin-top: 3px; font-size: 11px; color: #697a77; }
+  </style>
+</head>
+<body>
+  <main class="phone" id="app"></main>
+
+  <script>
+    const catalog = {
+      org: { name: "华升学历规划中心", desc: "成人学历提升产品商城，先选项目，再选学校、层次和专业。" },
+      teachers: [
+        { id: "li", avatar: "李", name: "李老师", title: "小自考规划", desc: "熟悉四川、湖北小自考院校和专业搭配。", detail: "长期负责小自考项目咨询，擅长根据学员基础、目标专业、拿证时间和预算匹配方案。", strengths: ["四川小自考", "湖北小自考", "专本衔接"] },
+        { id: "wang", avatar: "王", name: "王老师", title: "国开规划", desc: "擅长在职学员稳妥拿证路径和预算匹配。", detail: "专注开放大学和在职学历规划，适合工作时间不固定、希望流程更稳定的学员。", strengths: ["国开项目", "在职提升", "稳妥拿证"] },
+        { id: "chen", avatar: "陈", name: "陈老师", title: "助学自考", desc: "负责学习计划、考期提醒和毕业节点跟进。", detail: "负责助学自考学习路径、考期安排和毕业节点跟进。", strengths: ["助学自考", "学习计划", "考期提醒"] }
+      ],
+      mediaAccounts: [
+        { id: "douyin", avatar: "抖", name: "抖音", handle: "华升学历规划", desc: "短视频讲解热门专业、院校选择和报名节点。", detail: "适合展示老师出镜讲解、学员常见问题、报考时间提醒和专业选择建议。", metrics: ["专业科普", "直播咨询", "报名提醒"] },
+        { id: "redbook", avatar: "红", name: "小红书", handle: "学历提升规划笔记", desc: "图文笔记展示真实咨询场景和避坑指南。", detail: "适合围绕学校、专业、价格、流程、避坑经验沉淀笔记。", metrics: ["图文笔记", "案例拆解", "私信咨询"] },
+        { id: "channels", avatar: "视", name: "视频号", handle: "华升学历服务号", desc: "承接微信生态咨询、直播和私域转化。", detail: "适合和小程序、企业微信、社群联动，展示直播回放、政策解读和规划师答疑。", metrics: ["微信生态", "直播回放", "私域承接"] }
+      ],
+      categories: [
+        { id: "sc-self", name: "四川小自考", badge: "热门", cover: "川", desc: "统考科目少，校考安排灵活。", schools: [
+          { id: "scu", name: "四川大学", tag: "综合类院校", intro: "综合实力强，适合重视院校品牌和专业实用性的学员。", imageLabel: "川大", detail: "四川大学方向适合重视学校品牌、希望专业选择更稳妥的学员。", majors: [
+            { id: "admin", name: "行政管理", desc: "适合行政、人事、事业单位备考。", tags: ["文职适配", "管理方向"], detail: "课程通用性强，适合提升学历门槛和基层管理能力。", prices: [{ level: "专科", price: "¥6,980", service: "报名规划、资料审核、学习提醒" }, { level: "本科", price: "¥8,980", service: "统考规划、校考提醒、论文指导" }] },
+            { id: "law", name: "法学", desc: "适合合规、行政、基层法律服务方向。", tags: ["本科推荐", "岗位拓展"], detail: "适合需要法律基础、合规意识或行政管理能力的学员。", prices: [{ level: "专科", price: "¥7,280", service: "基础课程规划、考试节奏提醒" }, { level: "本科", price: "¥9,280", service: "科目规划、论文指导、毕业跟进" }] }
+          ] },
+          { id: "uestc", name: "电子科技大学", tag: "理工类院校", intro: "理工背景突出，适合技术、互联网、信息化岗位人群。", imageLabel: "成电", detail: "电子科技大学方向更适合理工、信息化、管理岗位人群。", majors: [
+            { id: "computer", name: "计算机科学与技术", desc: "适合IT、运维、产品、信息化岗位。", tags: ["理工热门", "技术岗位"], detail: "专业应用面广，适合技术岗和信息化管理方向。", prices: [{ level: "专科", price: "¥7,680", service: "入门学习规划、题库资料" }, { level: "本科", price: "¥9,680", service: "统考安排、实践课提醒、论文指导" }] }
+          ] }
+        ] },
+        { id: "hb-self", name: "湖北小自考", badge: "院校多", cover: "鄂", desc: "院校选择多，专业实用。", schools: [
+          { id: "hubei-univ", name: "湖北大学", tag: "综合类院校", intro: "专业覆盖均衡，适合管理、教育、文职方向。", imageLabel: "湖大", detail: "湖北大学方向适合管理、教育、文职类学员。", majors: [
+            { id: "chinese", name: "汉语言文学", desc: "适合文职、新媒体、教师方向。", tags: ["文职友好", "教师方向"], detail: "适合文字表达、教育培训、新媒体和行政文职相关人群。", prices: [{ level: "专科", price: "¥6,980", service: "课程资料、考试提醒" }, { level: "本科", price: "¥8,980", service: "统考规划、论文指导" }] }
+          ] }
+        ] },
+        { id: "aid-self", name: "助学自考", badge: "带学", cover: "助", desc: "课程、题库、学习计划和督学服务。", schools: [
+          { id: "normal-aid", name: "师范教育方向", tag: "助学方向", intro: "围绕教师资格和教育行业就业设计学习路径。", imageLabel: "师范", detail: "适合教育培训、幼教、小学教育等岗位人群。", majors: [
+            { id: "preschool", name: "学前教育", desc: "适合幼教、托育、早教方向。", tags: ["幼教方向", "课程支持"], detail: "适合幼儿园、早教、托育机构从业者。", prices: [{ level: "专科", price: "¥5,980", service: "题库资料、班主任督学" }, { level: "本科", price: "¥7,980", service: "课程辅导、论文提醒" }] }
+          ] }
+        ] },
+        { id: "open-edu", name: "国开项目", badge: "稳妥", cover: "国", desc: "线上学习为主，适合工作忙的学员。", schools: [
+          { id: "ou-china", name: "国家开放大学", tag: "开放教育", intro: "学籍可查，学习节奏稳定，适合在职提升。", imageLabel: "国开", detail: "适合工作忙、希望流程稳定的在职学员。", majors: [
+            { id: "open-admin", name: "行政管理", desc: "适合办公室、人事行政、基层管理。", tags: ["线上学习", "在职友好"], detail: "流程清晰，适合希望学习节奏更稳定的在职学员。", prices: [{ level: "专科", price: "¥5,980", service: "报名资料、学习提醒" }, { level: "本科", price: "¥7,980", service: "入学跟进、毕业节点提醒" }] }
+          ] }
+        ] }
+      ]
+    };
+
+    const state = { view: "home", categoryId: "sc-self", schoolId: "", level: "专科", majorId: "", teacherId: "", mediaId: "" };
+    const app = document.getElementById("app");
+    const category = () => catalog.categories.find(item => item.id === state.categoryId) || catalog.categories[0];
+    const school = () => category().schools.find(item => item.id === state.schoolId) || category().schools[0];
+    const major = () => school().majors.find(item => item.id === state.majorId) || school().majors[0];
+    const teacher = () => catalog.teachers.find(item => item.id === state.teacherId) || catalog.teachers[0];
+    const media = () => catalog.mediaAccounts.find(item => item.id === state.mediaId) || catalog.mediaAccounts[0];
+    const selectedPrice = () => major().prices.find(item => item.level === state.level) || major().prices[0];
+    const consult = () => alert("这里后续可以换成电话、微信二维码或表单留资");
+    const go = (view) => { state.view = view; render(); };
+
+    function renderHome() {
+      app.innerHTML = `
+        <section class="hero"><div class="hero-text"><span class="eyebrow">学历提升商城</span><strong class="hero-title">${catalog.org.name}</strong><span class="hero-desc">${catalog.org.desc}</span></div><div class="coupon"><small>规划</small><strong>1对1</strong></div></section>
+        <div class="section-head"><strong class="section-title">学历规划师团队</strong><span class="section-subtitle">点击查看详情</span></div>
+        <section class="teacher-row">${catalog.teachers.map(item => `<button class="teacher-mini" data-id="${item.id}"><div class="avatar">${item.avatar}</div><strong>${item.name}</strong><span>${item.title}</span></button>`).join("")}</section>
+        <div class="section-head"><strong class="section-title">新媒体账号</strong><span class="section-subtitle">点击查看展示</span></div>
+        <section class="media-list">${catalog.mediaAccounts.map(item => `<button class="media-card" data-id="${item.id}"><div class="media-icon">${item.avatar}</div><strong class="media-name">${item.name}</strong><span class="media-desc">${item.handle}</span></button>`).join("")}</section>
+        <div class="section-head"><strong class="section-title">选择项目</strong><span class="section-subtitle">进入学校列表</span></div>
+        <section class="grid">${catalog.categories.map(item => `<button class="category card" data-id="${item.id}"><div class="cover">${item.cover}</div><div class="category-copy"><div class="row"><strong class="name">${item.name}</strong><span class="badge">${item.badge}</span></div><span class="category-desc">${item.desc}</span><div class="row bottom"><span>${item.schools.length}所学校可选</span><span class="link">进入</span></div></div></button>`).join("")}</section>`;
+      app.querySelectorAll(".teacher-mini").forEach(btn => btn.onclick = () => { state.teacherId = btn.dataset.id; go("teacher"); });
+      app.querySelectorAll(".media-card").forEach(btn => btn.onclick = () => { state.mediaId = btn.dataset.id; go("media"); });
+      app.querySelectorAll(".category").forEach(btn => btn.onclick = () => { state.categoryId = btn.dataset.id; state.schoolId = ""; go("schools"); });
+    }
+
+    function renderTeacher() {
+      const item = teacher();
+      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="avatar">${item.avatar}</div><div class="profile-copy"><strong class="title">${item.name}</strong><span class="media-desc">${item.title}</span><span class="profile-desc">${item.desc}</span></div></section><section class="detail-card"><strong class="detail-title">详细介绍</strong><span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">擅长方向</strong><div class="tags">${item.strengths.map(t => `<span class="tag">${t}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("home");
+    }
+
+    function renderMedia() {
+      const item = media();
+      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="profile-media">${item.avatar}</div><div class="profile-copy"><strong class="title">${item.name}</strong><span class="media-desc">${item.handle}</span><span class="profile-desc">${item.desc}</span></div></section><section class="showcase">${item.name}展示区</section><section class="detail-card"><strong class="detail-title">账号介绍</strong><span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">内容方向</strong><div class="tags">${item.metrics.map(t => `<span class="tag">${t}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("home");
+    }
+
+    function renderSchools() {
+      const c = category();
+      app.innerHTML = `<button class="back">返回首页</button><section class="banner"><span class="crumb">首页 / ${c.name}</span><strong class="title">${c.name}</strong><span class="desc">${c.desc}</span></section><div class="section-head"><strong class="section-title">选择学校</strong><span class="section-subtitle">只展示学校</span></div><section class="list">${c.schools.map(s => `<button class="school" data-id="${s.id}"><div class="cover">校</div><div class="school-copy"><div class="row"><strong class="name">${s.name}</strong><span class="badge">${s.tag}</span></div><span class="school-desc">${s.intro}</span><div class="row bottom"><span>${s.majors.length}个专业方向</span><span class="link">选层次</span></div></div></button>`).join("")}</section>`;
+      app.querySelector(".back").onclick = () => go("home");
+      app.querySelectorAll(".school").forEach(btn => btn.onclick = () => { state.schoolId = btn.dataset.id; go("levels"); });
+    }
+
+    function renderLevels() {
+      const s = school();
+      app.innerHTML = `<button class="back">返回学校</button><section class="banner"><span class="crumb">${category().name}</span><strong class="title">${s.name}</strong><span class="desc">${s.intro}</span></section><section class="school-info"><div class="intro-image">${s.imageLabel}</div><strong class="name">学校介绍</strong><span class="school-desc">${s.detail}</span></section><div class="section-head"><strong class="section-title">选择报读层次</strong><span class="section-subtitle">下一步看专业价格</span></div><section class="levels"><button class="level" data-level="专科"><strong class="level-title">专科</strong><span class="link bottom">查看专业</span></button><button class="level" data-level="本科"><strong class="level-title">本科</strong><span class="link bottom">查看专业</span></button></section>`;
+      app.querySelector(".back").onclick = () => go("schools");
+      app.querySelectorAll(".level").forEach(btn => btn.onclick = () => { state.level = btn.dataset.level; go("majors"); });
+    }
+
+    function renderMajors() {
+      const s = school();
+      const list = s.majors.map(m => ({ ...m, selectedPrice: m.prices.find(p => p.level === state.level) })).filter(Boolean);
+      app.innerHTML = `<button class="back">返回层次</button><section class="banner"><span class="crumb">${category().name} / ${s.name}</span><strong class="title">${state.level}专业选择</strong><span class="desc">点击专业进入详情介绍。</span></section><div class="section-head"><strong class="section-title">专业与价格</strong><span class="section-subtitle">${list.length}个可选</span></div><section class="list">${list.map(m => `<button class="major" data-id="${m.id}"><div class="major-head"><div class="major-copy"><strong class="name">${m.name}</strong><span class="major-desc">${m.desc}</span></div><strong class="price">${m.selectedPrice.price}</strong></div><div class="tags">${m.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div><div class="service"><span>${m.selectedPrice.service}</span><span class="link">进入详情</span></div></button>`).join("")}</section>`;
+      app.querySelector(".back").onclick = () => go("levels");
+      app.querySelectorAll(".major").forEach(btn => btn.onclick = () => { state.majorId = btn.dataset.id; go("majorDetail"); });
+    }
+
+    function renderMajorDetail() {
+      const m = major();
+      const p = selectedPrice();
+      app.innerHTML = `<button class="back">返回专业</button><section class="banner"><span class="crumb">${category().name} / ${school().name} / ${state.level}</span><strong class="title">${m.name}</strong><span class="desc">${m.desc}</span></section><section class="detail-card"><strong class="detail-title">当前价格</strong><strong class="price">${p.price}</strong><span class="detail-text">${p.service}</span></section><section class="detail-card"><strong class="detail-title">专业详情介绍</strong><span class="detail-text">${m.detail}</span></section><section class="detail-card"><strong class="detail-title">适合人群</strong><div class="tags">${m.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div></section>`;
+      app.querySelector(".back").onclick = () => go("majors");
+    }
+
+    function render() {
+      window.scrollTo({ top: 0, behavior: "instant" });
+      if (state.view === "home") renderHome();
+      if (state.view === "teacher") renderTeacher();
+      if (state.view === "media") renderMedia();
+      if (state.view === "schools") renderSchools();
+      if (state.view === "levels") renderLevels();
+      if (state.view === "majors") renderMajors();
+      if (state.view === "majorDetail") renderMajorDetail();
+    }
+
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<view class="page" wx:if="{{teacher}}">
+  <view class="profile">
+    <view class="avatar">{{teacher.avatar}}</view>
+    <view class="copy">
+      <text class="name">{{teacher.name}}</text>
+      <text class="title">{{teacher.title}}</text>
+      <text class="desc">{{teacher.desc}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="card-title">详细介绍</text>
+    <text class="detail">{{teacher.detail}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">擅长方向</text>
+    <view class="chips">
+      <text wx:for="{{teacher.strengths}}" wx:key="*this" class="chip">{{item}}</text>
+    </view>
+  </view>
+</view>

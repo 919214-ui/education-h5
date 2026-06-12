@@ -1,0 +1,24 @@
+<view class="page" wx:if="{{media}}">
+  <view class="profile">
+    <view class="avatar">{{media.avatar}}</view>
+    <view class="copy">
+      <text class="name">{{media.name}}</text>
+      <text class="handle">{{media.handle}}</text>
+      <text class="desc">{{media.desc}}</text>
+    </view>
+  </view>
+
+  <view class="showcase">{{media.name}}展示区</view>
+
+  <view class="card">
+    <text class="card-title">账号介绍</text>
+    <text class="detail">{{media.detail}}</text>
+  </view>
+
+  <view class="card">
+    <text class="card-title">内容方向</text>
+    <view class="chips">
+      <text wx:for="{{media.metrics}}" wx:key="*this" class="chip">{{item}}</text>
+    </view>
+  </view>
+</view>
