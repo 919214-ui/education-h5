@@ -1,8 +1,18 @@
 {
   "org": {
-    "name": "新火教育学校",
+    "name": "新火教育产品中心",
     "desc": "成人学历提升产品商城，先选项目，再选学校、层次和专业。",
     "bannerImageUrl": "/uploads/1781247459015-75be87727252.png",
+    "bannerImages": [
+      "/uploads/1781247459015-75be87727252.png"
+    ],
+    "bannerSlides": [
+      {
+        "imageUrl": "/uploads/1781247459015-75be87727252.png",
+        "title": "新火教育产品中心",
+        "desc": "成人学历提升项目、学校和专业一站式查看"
+      }
+    ],
     "backgroundImageUrl": ""
   },
   "teachers": [
@@ -121,6 +131,13 @@
       "badge": "热门",
       "cover": "川",
       "coverImageUrl": "/uploads/1781250512561-fa2d20c29fc5.jpg",
+      "bannerSlides": [
+        {
+          "imageUrl": "/uploads/1781250519041-8b960d7676e6.jpg",
+          "title": "",
+          "desc": ""
+        }
+      ],
       "desc": "统考科目少，校考安排灵活。",
       "schools": [
         {

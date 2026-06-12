@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>资料管理后台</title>
+  <title>新火教育产品中心管理后台</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f4f7f6; color: #172322; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -101,7 +101,7 @@
 </head>
 <body>
   <div id="login" class="login">
-    <h1>资料管理后台</h1>
+    <h1>新火教育产品中心管理后台</h1>
     <p class="hint">默认密码是 admin123，上云后请用环境变量 ADMIN_PASSWORD 改成强密码。</p>
     <div id="fileWarningLogin" class="server-warning hidden">请先双击 start.bat 启动本地服务，再用 http://localhost:3000/admin.html 打开后台。直接打开文件时，登录、保存和图片上传都不能正常工作。</div>
     <label>后台密码</label>
@@ -115,7 +115,7 @@
   <div id="app" class="wrap hidden">
     <div class="top">
       <div>
-        <h1>资料管理后台</h1>
+        <h1>新火教育产品中心管理后台</h1>
         <div class="hint">日常新增产品用“快速录入”，需要改背景图、学校介绍或删除资料时再进“详细设置”。</div>
         <div id="fileWarningApp" class="server-warning hidden">当前是文件预览模式，图片上传和保存会失败。请使用 http://localhost:3000/admin.html 打开后台。</div>
       </div>
@@ -141,7 +141,7 @@
     let token = localStorage.getItem("adminToken") || "";
     let site = null;
     let tab = "quick";
-    let selected = { teacher: 0, media: 0, category: 0, school: 0, major: 0 };
+    let selected = { teacher: 0, media: 0, category: 0, school: 0, major: 0, banner: 0, categoryBanner: 0 };
     let catalogSearch = "";
 
     const $ = (selector) => document.querySelector(selector);
@@ -315,6 +315,13 @@
 
     async function save() {
       try {
+        if (site?.org?.bannerSlides) {
+          site.org.bannerImages = site.org.bannerSlides.map((item) => item.imageUrl).filter(Boolean);
+          site.org.bannerImageUrl = site.org.bannerImages[0] || "";
+        }
+        (site?.categories || []).forEach((category) => {
+          if (category.bannerSlides) category.bannerImageUrl = category.bannerSlides.find((item) => item.imageUrl)?.imageUrl || "";
+        });
         await api("/api/admin/site", { method: "PUT", body: JSON.stringify(site) });
         showToast("已保存");
         render();
@@ -388,16 +395,63 @@
     }
 
     function renderOrg() {
+      if (!Array.isArray(site.org.bannerSlides)) {
+        site.org.bannerSlides = (Array.isArray(site.org.bannerImages) ? site.org.bannerImages : (site.org.bannerImageUrl ? [site.org.bannerImageUrl] : []))
+          .filter(Boolean)
+          .map((url) => ({ imageUrl: url, title: "", desc: "" }));
+      }
       content.innerHTML = `<div class="panel">
         <div class="form-grid">
           <label>机构名称<input data-field="name"></label>
           <label>首页简介<input data-field="desc"></label>
         </div>
-        ${imageBox("bannerImageUrl", "首页 Banner 图片", site.org.bannerImageUrl, "", "建议图片宽 750px，高 360px，单张不超过 4MB。")}
+        <div class="subhead">
+          <h3>首页 Banner 轮播图</h3>
+          <button class="btn ghost" id="addBannerImage">新增 Banner</button>
+        </div>
+        ${site.org.bannerSlides.length ? site.org.bannerSlides.map((slide, index) => `<details class="fold" ${index === selected.banner ? "open" : ""}>
+          <summary>Banner ${index + 1}</summary>
+          <div class="fold-body" data-banner-row="${index}">
+            <div class="form-grid">
+              <label>标题文字<input data-banner-field="title"></label>
+              <label>副标题<input data-banner-field="desc"></label>
+            </div>
+            ${imageBox("imageUrl", "Banner 图片", slide.imageUrl, "homeBanner", "建议图片宽 750px，高 520px，单张不超过 4MB。", ` data-banner-index="${index}"`)}
+            <div class="actions">
+              <button class="btn danger" data-del-banner="${index}">删除这张 Banner</button>
+            </div>
+          </div>
+        </details>`).join("") : `<div class="hint">还没有首页 Banner 图片，可点击新增 Banner。</div>`}
         ${imageBox("backgroundImageUrl", "页面背景图片", site.org.backgroundImageUrl, "", "建议图片宽 750px，高 1334px，单张不超过 4MB。")}
       </div>`;
       bindInputs(content, site.org, ["name", "desc"]);
-      bindImageBoxes(content, () => site.org);
+      content.querySelectorAll("[data-banner-row]").forEach((row) => {
+        const slide = site.org.bannerSlides[Number(row.dataset.bannerRow)];
+        row.querySelectorAll("[data-banner-field]").forEach((input) => {
+          input.value = slide[input.dataset.bannerField] || "";
+          input.oninput = () => { slide[input.dataset.bannerField] = input.value; };
+        });
+      });
+      bindImageBoxes(content, (box) => {
+        if (box.dataset.imageObject === "homeBanner") {
+          const index = Number(box.dataset.bannerIndex);
+          return site.org.bannerSlides[index];
+        }
+        return site.org;
+      });
+      $("#addBannerImage").onclick = () => {
+        site.org.bannerSlides.push({ imageUrl: "", title: "", desc: "" });
+        selected.banner = site.org.bannerSlides.length - 1;
+        render();
+      };
+      content.querySelectorAll("[data-del-banner]").forEach((button) => {
+        button.onclick = () => {
+          site.org.bannerSlides.splice(Number(button.dataset.delBanner), 1);
+          site.org.bannerImageUrl = site.org.bannerSlides.find((item) => item.imageUrl)?.imageUrl || "";
+          selected.banner = Math.max(0, selected.banner - 1);
+          render();
+        };
+      });
     }
 
     function renderTeachers() {
@@ -606,6 +660,9 @@
       const majors = school?.majors || [];
       const major = majors[selected.major] || majors[0];
       ensureMajorDetailBlocks(major);
+      if (category && !Array.isArray(category.bannerSlides)) {
+        category.bannerSlides = [category.bannerImageUrl || category.coverImageUrl].filter(Boolean).map((url) => ({ imageUrl: url, title: "", desc: "" }));
+      }
 
       content.innerHTML = `<div class="grid">
         <div class="panel">
@@ -634,7 +691,18 @@
             <label>封面简称<input data-cat="cover"></label>
           </div>
           ${imageBox("coverImageUrl", "项目封面图片", category.coverImageUrl, "category", "建议图片宽 600px，高 420px，单张不超过 4MB。")}
-          ${imageBox("bannerImageUrl", "项目顶部背景图", category.bannerImageUrl, "category", "建议图片宽 750px，高 360px，单张不超过 4MB。")}
+          <div class="subhead"><h3>项目页 Banner 轮播图</h3><button class="btn ghost" id="addCategoryBanner">新增 Banner</button></div>
+          ${(category.bannerSlides || []).length ? category.bannerSlides.map((slide, index) => `<details class="fold" ${index === selected.categoryBanner ? "open" : ""}>
+            <summary>项目 Banner ${index + 1}</summary>
+            <div class="fold-body" data-category-banner-row="${index}">
+              <div class="form-grid">
+                <label>标题文字<input data-category-banner-field="title"></label>
+                <label>副标题<input data-category-banner-field="desc"></label>
+              </div>
+              ${imageBox("imageUrl", "项目 Banner 图片", slide.imageUrl, "categoryBanner", "建议图片宽 750px，高 520px，单张不超过 4MB。", ` data-category-banner-index="${index}"`)}
+              <div class="actions"><button class="btn danger" data-del-category-banner="${index}">删除这张 Banner</button></div>
+            </div>
+          </details>`).join("") : `<div class="hint">还没有项目 Banner 图片，可点击新增 Banner。</div>`}
           <label>项目简介<textarea data-cat="desc"></textarea></label></div></details>` : ""}
 
           ${school ? `<details class="fold"><summary>学校资料</summary><div class="fold-body"><div class="subhead"><h3>学校资料</h3><button class="btn danger" id="delSchool">删除学校</button></div>
@@ -675,11 +743,19 @@
       if (category) bindPrefixed("cat", category, ["name", "badge", "cover", "desc"]);
       if (school) bindPrefixed("school", school, ["name", "tag", "imageLabel", "intro", "detailBoxHeight"]);
       if (major) bindPrefixed("major", major, ["name", "desc", "tags"]);
+      content.querySelectorAll("[data-category-banner-row]").forEach((row) => {
+        const slide = category.bannerSlides[Number(row.dataset.categoryBannerRow)];
+        row.querySelectorAll("[data-category-banner-field]").forEach((input) => {
+          input.value = slide[input.dataset.categoryBannerField] || "";
+          input.oninput = () => { slide[input.dataset.categoryBannerField] = input.value; };
+        });
+      });
       bindImageBoxes(content, (box) => {
         if (box.dataset.imageObject === "school") return school;
         if (box.dataset.imageObject === "majorDetail") return major.detailBlocks[Number(box.dataset.blockIndex)];
         if (box.dataset.imageObject === "major") return major;
         if (box.dataset.imageObject === "price") return major.prices[Number(box.dataset.priceIndex)];
+        if (box.dataset.imageObject === "categoryBanner") return category.bannerSlides[Number(box.dataset.categoryBannerIndex)];
         return category;
       });
 
@@ -691,6 +767,15 @@
 
       $("#addCategory").onclick = () => { site.categories.push({ id: uid("category"), name: "新项目", badge: "", cover: "新", coverImageUrl: "", bannerImageUrl: "", desc: "", schools: [] }); selected.category = site.categories.length - 1; selected.school = 0; selected.major = 0; render(); };
       if ($("#delCategory")) $("#delCategory").onclick = () => { site.categories.splice(selected.category, 1); selected.category = Math.max(0, selected.category - 1); selected.school = 0; selected.major = 0; render(); };
+      if ($("#addCategoryBanner")) $("#addCategoryBanner").onclick = () => { category.bannerSlides = category.bannerSlides || []; category.bannerSlides.push({ imageUrl: "", title: "", desc: "" }); selected.categoryBanner = category.bannerSlides.length - 1; render(); };
+      content.querySelectorAll("[data-del-category-banner]").forEach((button) => {
+        button.onclick = () => {
+          category.bannerSlides.splice(Number(button.dataset.delCategoryBanner), 1);
+          category.bannerImageUrl = category.bannerSlides.find((item) => item.imageUrl)?.imageUrl || "";
+          selected.categoryBanner = Math.max(0, selected.categoryBanner - 1);
+          render();
+        };
+      });
       $("#addSchool").onclick = () => { if (!category) return; category.schools.push({ id: uid("school"), name: "新学校", tag: "", intro: "", imageLabel: "校", imageUrl: "", bannerImageUrl: "", majorBannerImageUrl: "", juniorLevelImageUrl: "", bachelorLevelImageUrl: "", detailImageUrl: "", detail: "", detailHtml: "", detailBoxHeight: "420", majors: [] }); selected.school = category.schools.length - 1; selected.major = 0; render(); };
       if ($("#delSchool")) $("#delSchool").onclick = () => { category.schools.splice(selected.school, 1); selected.school = Math.max(0, selected.school - 1); selected.major = 0; render(); };
       $("#addMajor").onclick = () => { if (!school) return; school.majors.push({ id: uid("major"), name: "新专业", desc: "", bannerImageUrl: "", tags: [], detail: "", detailImageUrl: "", detailBlocks: [], detailHtml: "", prices: [{ level: "专科", avatar: "专", avatarImageUrl: "", price: "", service: "" }, { level: "本科", avatar: "本", avatarImageUrl: "", price: "", service: "" }] }); selected.major = school.majors.length - 1; render(); };

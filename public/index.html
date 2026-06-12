@@ -3,18 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>学历提升商城</title>
+  <title>新火教育产品中心</title>
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; background: #f4f7f6; color: #172322; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
     button { border: 0; font: inherit; color: inherit; cursor: pointer; }
-    .page { max-width: 430px; min-height: 100vh; margin: 0 auto; padding: 14px 14px 28px; background-color: #f4f7f6; background-size: cover; background-position: top center; }
-    .hero, .banner { border-radius: 8px; color: #fff; background: linear-gradient(135deg, #b94438 0%, #d88435 48%, #1f5f5b 100%); background-size: cover; background-position: center; }
-    .hero { min-height: 150px; padding: 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .page { max-width: 430px; min-height: 100vh; margin: 0 auto; padding: 14px 14px 86px; background-color: #f4f7f6; background-size: cover; background-position: top center; }
+    .hero, .banner { border-radius: 8px; color: #172322; background: #fff; background-size: cover; background-position: center; }
+    .hero { position: relative; height: 260px; display: block; overflow: hidden; }
+    .hero-track { height: 100%; display: flex; transition: transform .35s ease; }
+    .hero-slide { min-width: 100%; height: 100%; background: #fff; }
+    .hero-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-caption { position: absolute; left: 16px; right: 16px; bottom: 22px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.32); }
+    .hero-caption strong { display: block; font-size: 24px; line-height: 1.18; font-weight: 900; }
+    .hero-caption span { display: block; margin-top: 6px; font-size: 13px; line-height: 1.45; }
+    .hero-empty { height: 100%; padding: 18px; display: flex; flex-direction: column; justify-content: center; gap: 9px; }
+    .hero-dots { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: center; gap: 6px; }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+    .hero-dot.active { width: 18px; border-radius: 999px; background: #fff; }
     .hero-text { flex: 1; display: flex; flex-direction: column; gap: 9px; }
-    .eyebrow, .crumb { font-size: 12px; color: rgba(255,255,255,.8); }
+    .eyebrow, .crumb { font-size: 12px; color: #8a6a36; }
     .hero-title, .title { font-size: 23px; line-height: 1.18; font-weight: 900; }
-    .hero-desc, .desc { font-size: 13px; line-height: 1.55; color: rgba(255,255,255,.9); }
+    .hero-desc, .desc { font-size: 13px; line-height: 1.55; color: #596966; }
     .section-head { margin: 17px 0 9px; display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
     .section-title { font-size: 18px; font-weight: 900; }
     .section-subtitle { font-size: 11px; color: #697a77; }
@@ -37,7 +47,7 @@
     .muted { margin-top: 5px; font-size: 12px; line-height: 1.5; color: #596966; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .bottom { margin-top: auto; font-size: 11px; color: #8a6a36; }
     .link { font-size: 12px; font-weight: 900; color: #1f5f5b; }
-    .banner { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+    .banner { min-height: 210px; padding: 16px; display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; border: 1px solid #edf3f1; }
     .back { margin-bottom: 8px; padding: 7px 10px; border-radius: 8px; background: #fff; color: #1f5f5b; font-size: 12px; font-weight: 900; }
     .top-actions { display: flex; gap: 8px; }
     .school-info { margin-top: 11px; min-height: 210px; padding: 15px; display: block; overflow: auto; }
@@ -87,6 +97,13 @@
     .result-copy { min-width: 0; display: flex; flex-direction: column; gap: 3px; }
     .result-type { flex: 0 0 auto; font-size: 11px; font-weight: 900; color: #b94438; }
     .empty { padding: 18px; border-radius: 8px; background: #fff; color: #697a77; text-align: center; }
+    .school-summary { margin-top: 11px; padding: 14px; border-radius: 8px; background: #fff; box-shadow: 0 4px 14px rgba(39,63,60,.08); }
+    .summary-title { display: block; font-size: 16px; font-weight: 900; }
+    .summary-text { display: block; margin-top: 7px; font-size: 13px; line-height: 1.65; color: #596966; }
+    .bottom-nav { position: fixed; left: 50%; bottom: 12px; z-index: 20; width: min(402px, calc(100vw - 28px)); transform: translateX(-50%); padding: 8px; border-radius: 8px; background: rgba(255,255,255,.94); display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; box-shadow: 0 8px 28px rgba(39,63,60,.16); backdrop-filter: blur(10px); }
+    .nav-btn { height: 42px; border-radius: 8px; background: #e9f3f1; color: #1f5f5b; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; }
+    .nav-btn.primary { background: #b94438; color: #fff; }
+    .nav-btn:disabled { opacity: .42; cursor: default; }
   </style>
 </head>
 <body>
@@ -103,6 +120,10 @@
       teacherId: "",
       mediaId: ""
     };
+    const historyBack = [];
+    const historyForward = [];
+    let bannerTimer = null;
+    let bannerIndex = 0;
 
     const byId = (items, id) => (items || []).find((item) => item.id === id) || (items || [])[0];
     const category = () => byId(data.categories, current.categoryId);
@@ -112,7 +133,7 @@
     const media = () => byId(data.mediaAccounts, current.mediaId);
     const selectedPrice = () => (major().prices || []).find((item) => item.level === current.level) || (major().prices || [])[0];
     const imageOrLabel = (url, label) => url ? `<img src="${url}" alt="">` : label;
-    const bg = (url, fallback = "") => url ? `style="background-image: linear-gradient(135deg, rgba(185,68,56,.72), rgba(31,95,91,.72)), url('${url.replace(/'/g, "%27")}')"` : fallback;
+    const bg = (url, fallback = "") => url ? `style="background-image: url('${url.replace(/'/g, "%27")}')"` : fallback;
     const rawBg = (url) => url ? `style="background-image: url('${url.replace(/'/g, "%27")}')"` : "";
     const detailImage = (url) => url ? `<div class="detail-image"><img src="${url}" alt=""></div>` : "";
     const schoolDetailFlow = (item) => {
@@ -131,8 +152,26 @@
       return `<section class="product-detail"><div class="product-detail-head">专业详情介绍</div>${body || `<div class="product-detail-text">暂无详情内容</div>`}</section>`;
     };
 
-    function go(view) {
+    const stateCopy = () => ({ ...current });
+    const applyState = (state) => Object.assign(current, state);
+
+    function go(view, options = {}) {
+      if (!options.replace && current.view !== view) {
+        historyBack.push(stateCopy());
+        historyForward.length = 0;
+      }
       current.view = view;
+      window.scrollTo({ top: 0, behavior: "instant" });
+      render();
+    }
+
+    function goHistory(direction) {
+      const from = direction === "back" ? historyBack : historyForward;
+      const to = direction === "back" ? historyForward : historyBack;
+      const state = from.pop();
+      if (!state) return;
+      to.push(stateCopy());
+      applyState(state);
       window.scrollTo({ top: 0, behavior: "instant" });
       render();
     }
@@ -182,12 +221,42 @@
       input.oninput = draw;
     }
 
+    function slidesFrom(owner, fallbackUrl = "") {
+      const slides = Array.isArray(owner?.bannerSlides) ? owner.bannerSlides.filter((item) => item && item.imageUrl) : [];
+      if (slides.length) return slides;
+      const images = Array.isArray(owner?.bannerImages) ? owner.bannerImages.filter(Boolean) : [];
+      if (images.length) return images.map((url) => ({ imageUrl: url, title: "", desc: "" }));
+      const url = fallbackUrl || owner?.bannerImageUrl || "";
+      return url ? [{ imageUrl: url, title: "", desc: "" }] : [];
+    }
+
+    function clearBannerTimer() {
+      if (bannerTimer) clearInterval(bannerTimer);
+      bannerTimer = null;
+    }
+
+    function bindBannerCarousel(slides) {
+      clearBannerTimer();
+      if (slides.length <= 1) return;
+      const track = app.querySelector(".hero-track");
+      const dots = Array.from(app.querySelectorAll(".hero-dot"));
+      const draw = () => {
+        track.style.transform = `translateX(${-bannerIndex * 100}%)`;
+        dots.forEach((dot, index) => dot.classList.toggle("active", index === bannerIndex));
+      };
+      bannerIndex = Math.min(bannerIndex, slides.length - 1);
+      draw();
+      bannerTimer = setInterval(() => {
+        bannerIndex = (bannerIndex + 1) % slides.length;
+        draw();
+      }, 3600);
+    }
+
     function renderHome() {
       app.style.backgroundImage = data.org.backgroundImageUrl ? `url('${data.org.backgroundImageUrl.replace(/'/g, "%27")}')` : "";
+      const slides = slidesFrom(data.org);
       app.innerHTML = `
-        <section class="hero" ${bg(data.org.bannerImageUrl)}>
-          <div class="hero-text"><strong class="hero-title">${data.org.name}</strong><span class="hero-desc">${data.org.desc}</span></div>
-        </section>
+        <section class="hero">${slides.length ? `<div class="hero-track">${slides.map((slide) => `<div class="hero-slide"><img src="${slide.imageUrl}" alt="">${slide.title || slide.desc ? `<div class="hero-caption"><strong>${slide.title || ""}</strong><span>${slide.desc || ""}</span></div>` : ""}</div>`).join("")}</div>${slides.length > 1 ? `<div class="hero-dots">${slides.map((_, index) => `<span class="hero-dot ${index === bannerIndex ? "active" : ""}"></span>`).join("")}</div>` : ""}` : `<div class="hero-empty"><span class="eyebrow">学历提升商城</span><strong class="hero-title">${data.org.name}</strong><span class="hero-desc">${data.org.desc}</span></div>`}</section>
         <section class="search-card">
           <input class="search-input" id="homeSearch" placeholder="搜索项目、学校、专业、老师">
           <div class="search-results" id="homeSearchResults"></div>
@@ -203,50 +272,53 @@
       app.querySelectorAll(".media-card").forEach((button) => button.onclick = () => { current.mediaId = button.dataset.id; go("media"); });
       app.querySelectorAll(".category").forEach((button) => button.onclick = () => { current.categoryId = button.dataset.id; current.schoolId = ""; go("schools"); });
       bindHomeSearch();
+      bindBannerCarousel(slides);
     }
 
     function renderTeacher() {
       const item = teacher();
-      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="avatar">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.title}</span><span class="muted">${item.desc}</span></div></section><section class="detail-card"><strong class="detail-title">详细介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">擅长方向</strong><div class="tags">${(item.strengths || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
-      app.querySelector(".back").onclick = () => go("home");
+      app.innerHTML = `<section class="profile"><div class="avatar">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.title}</span><span class="muted">${item.desc}</span></div></section><section class="detail-card"><strong class="detail-title">详细介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">擅长方向</strong><div class="tags">${(item.strengths || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
     }
 
     function renderMedia() {
       const item = media();
-      app.innerHTML = `<button class="back">返回首页</button><section class="profile"><div class="profile-media">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.handle}</span><span class="muted">${item.desc}</span></div></section><section class="showcase">${item.name}展示区</section><section class="detail-card"><strong class="detail-title">账号介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">内容方向</strong><div class="tags">${(item.metrics || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
-      app.querySelector(".back").onclick = () => go("home");
+      app.innerHTML = `<section class="profile"><div class="profile-media">${imageOrLabel(item.avatarUrl, item.avatar)}</div><div class="copy"><strong class="title">${item.name}</strong><span class="muted">${item.handle}</span><span class="muted">${item.desc}</span></div></section><section class="showcase">${item.name}展示区</section><section class="detail-card"><strong class="detail-title">账号介绍</strong>${detailImage(item.detailImageUrl)}<span class="detail-text">${item.detail}</span></section><section class="detail-card"><strong class="detail-title">内容方向</strong><div class="tags">${(item.metrics || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
     }
 
     function renderSchools() {
       const item = category();
-      app.innerHTML = `<button class="back">返回首页</button><section class="banner" ${bg(item.bannerImageUrl || item.coverImageUrl)}><span class="crumb">首页 / ${item.name}</span><strong class="title">${item.name}</strong><span class="desc">${item.desc}</span></section><div class="section-head"><strong class="section-title">选择学校</strong><span class="section-subtitle">只展示学校</span></div><section class="list">${item.schools.length ? item.schools.map((school) => `<button class="school" data-id="${school.id}"><div class="cover">${imageOrLabel(school.imageUrl, "校")}</div><div class="copy"><div class="row"><strong class="name">${school.name}</strong><span class="badge">${school.tag}</span></div><span class="muted">${school.intro}</span><div class="row bottom"><span>${school.majors.length}个专业方向</span><span class="link">选层次</span></div></div></button>`).join("") : `<div class="empty">该项目还没有录入学校</div>`}</section>`;
-      app.querySelector(".back").onclick = () => go("home");
+      const slides = slidesFrom(item, item.coverImageUrl);
+      app.innerHTML = `<section class="hero">${slides.length ? `<div class="hero-track">${slides.map((slide) => `<div class="hero-slide"><img src="${slide.imageUrl}" alt="">${slide.title || slide.desc ? `<div class="hero-caption"><strong>${slide.title || ""}</strong><span>${slide.desc || ""}</span></div>` : ""}</div>`).join("")}</div>${slides.length > 1 ? `<div class="hero-dots">${slides.map((_, index) => `<span class="hero-dot ${index === bannerIndex ? "active" : ""}"></span>`).join("")}</div>` : ""}` : `<div class="hero-empty"><strong class="hero-title">${item.name}</strong><span class="hero-desc">${item.desc}</span></div>`}</section><div class="section-head"><strong class="section-title">选择学校</strong><span class="section-subtitle">只展示学校</span></div><section class="list">${item.schools.length ? item.schools.map((school) => `<button class="school" data-id="${school.id}"><div class="cover">${imageOrLabel(school.imageUrl, "校")}</div><div class="copy"><div class="row"><strong class="name">${school.name}</strong><span class="badge">${school.tag}</span></div><span class="muted">${school.intro}</span><div class="row bottom"><span>${school.majors.length}个专业方向</span><span class="link">查看专业</span></div></div></button>`).join("") : `<div class="empty">该项目还没有录入学校</div>`}</section>`;
       app.querySelectorAll(".school").forEach((button) => button.onclick = () => { current.schoolId = button.dataset.id; go("levels"); });
+      bindBannerCarousel(slides);
     }
 
     function renderLevels() {
       const item = school();
-      app.innerHTML = `<div class="top-actions"><button class="back">返回学校</button></div><section class="banner" ${bg(item.bannerImageUrl || item.imageUrl)}><span class="crumb">${category().name}</span><strong class="title">${item.name}</strong><span class="desc">${item.intro}</span></section><section class="school-info" style="max-height:${item.detailBoxHeight || 420}px"><strong class="name">学校介绍</strong>${schoolDetailFlow(item)}</section><div class="section-head"><strong class="section-title">选择报读层次</strong><span class="section-subtitle">下一步看专业价格</span></div><section class="levels"><button class="level" data-level="专科" ${rawBg(item.juniorLevelImageUrl)}><strong class="level-title">专科</strong><span class="link">查看专业</span></button><button class="level" data-level="本科" ${rawBg(item.bachelorLevelImageUrl)}><strong class="level-title">本科</strong><span class="link">查看专业</span></button></section>`;
-      app.querySelector(".back").onclick = () => go("schools");
-      app.querySelectorAll(".level").forEach((button) => button.onclick = () => { current.level = button.dataset.level; go("majors"); });
+      const groups = ["专科", "本科"].map((level) => ({
+        level,
+        majors: (item.majors || []).map((major) => ({ ...major, selectedPrice: (major.prices || []).find((price) => price.level === level) })).filter((major) => major.selectedPrice)
+      }));
+      app.innerHTML = `<section class="hero">${slidesFrom(item, item.bannerImageUrl || item.imageUrl).length ? `<div class="hero-track">${slidesFrom(item, item.bannerImageUrl || item.imageUrl).map((slide) => `<div class="hero-slide"><img src="${slide.imageUrl}" alt="">${slide.title || slide.desc ? `<div class="hero-caption"><strong>${slide.title || ""}</strong><span>${slide.desc || ""}</span></div>` : ""}</div>`).join("")}</div>` : `<div class="hero-empty"><strong class="hero-title">${item.name}</strong><span class="hero-desc">${item.intro}</span></div>`}</section><section class="school-summary"><strong class="summary-title">${item.name}</strong><span class="summary-text">${item.intro || item.detail || "暂无学校简介"}</span></section>${groups.map((group) => `<div class="section-head"><strong class="section-title">${group.level}专业</strong><span class="section-subtitle">${group.majors.length}个可选</span></div><section class="list">${group.majors.length ? group.majors.map((major) => `<button class="major" data-id="${major.id}" data-level="${group.level}"><div class="major-avatar">${imageOrLabel(major.selectedPrice.avatarImageUrl, major.selectedPrice.avatar || major.name.slice(0, 1))}</div><div class="major-main"><strong class="name">${major.name}</strong><span class="muted">${major.desc}</span><div class="tags">${(major.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></div><div class="major-side"><strong class="price">${major.selectedPrice.price || "咨询"}</strong><span class="link">详情</span></div><div class="service"><span>${major.selectedPrice.service || ""}</span></div></button>`).join("") : `<div class="empty">暂无${group.level}专业</div>`}</section>`).join("")}`;
+      app.querySelectorAll(".major").forEach((button) => button.onclick = () => { current.level = button.dataset.level; current.majorId = button.dataset.id; go("major"); });
+      bindBannerCarousel(slidesFrom(item, item.bannerImageUrl || item.imageUrl));
     }
 
     function renderMajors() {
       const item = school();
       const majors = item.majors.map((major) => ({ ...major, selectedPrice: (major.prices || []).find((price) => price.level === current.level) })).filter((major) => major.selectedPrice);
-      app.innerHTML = `<button class="back">返回层次</button><section class="banner" ${bg(item.majorBannerImageUrl || item.bannerImageUrl || item.imageUrl)}><span class="crumb">${category().name} / ${item.name}</span><strong class="title">${current.level}专业选择</strong><span class="desc">点击专业进入详情介绍。</span></section><div class="section-head"><strong class="section-title">专业与价格</strong><span class="section-subtitle">${majors.length}个可选</span></div><section class="list">${majors.length ? majors.map((major) => `<button class="major" data-id="${major.id}"><div class="major-avatar">${imageOrLabel(major.selectedPrice.avatarImageUrl, major.selectedPrice.avatar || major.name.slice(0, 1))}</div><div class="major-main"><strong class="name">${major.name}</strong><span class="muted">${major.desc}</span><div class="tags">${(major.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></div><div class="major-side"><strong class="price">${major.selectedPrice.price || "咨询"}</strong><span class="link">进入详情</span></div><div class="service"><span>${major.selectedPrice.service || ""}</span></div></button>`).join("") : `<div class="empty">该层次还没有录入专业</div>`}</section>`;
-      app.querySelector(".back").onclick = () => go("levels");
+      app.innerHTML = `<section class="banner" ${bg(item.majorBannerImageUrl || item.bannerImageUrl || item.imageUrl)}><span class="crumb">${category().name} / ${item.name}</span><strong class="title">${current.level}专业选择</strong><span class="desc">点击专业进入详情介绍。</span></section><div class="section-head"><strong class="section-title">专业与价格</strong><span class="section-subtitle">${majors.length}个可选</span></div><section class="list">${majors.length ? majors.map((major) => `<button class="major" data-id="${major.id}"><div class="major-avatar">${imageOrLabel(major.selectedPrice.avatarImageUrl, major.selectedPrice.avatar || major.name.slice(0, 1))}</div><div class="major-main"><strong class="name">${major.name}</strong><span class="muted">${major.desc}</span><div class="tags">${(major.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></div><div class="major-side"><strong class="price">${major.selectedPrice.price || "咨询"}</strong><span class="link">进入详情</span></div><div class="service"><span>${major.selectedPrice.service || ""}</span></div></button>`).join("") : `<div class="empty">该层次还没有录入专业</div>`}</section>`;
       app.querySelectorAll(".major").forEach((button) => button.onclick = () => { current.majorId = button.dataset.id; go("major"); });
     }
 
     function renderMajor() {
       const item = major();
       const price = selectedPrice();
-      app.innerHTML = `<button class="back">返回专业</button><section class="banner" ${bg(item.bannerImageUrl || school().majorBannerImageUrl || school().bannerImageUrl || school().imageUrl)}><span class="crumb">${category().name} / ${school().name} / ${current.level}</span><strong class="title">${item.name}</strong><span class="desc">${item.desc}</span></section><section class="detail-card"><strong class="detail-title">当前价格</strong><strong class="price">${price.price}</strong><span class="detail-text">${price.service}</span></section>${majorDetailFlow(item)}<section class="detail-card"><strong class="detail-title">适合人群</strong><div class="tags">${(item.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
-      app.querySelector(".back").onclick = () => go("majors");
+      app.innerHTML = `<section class="banner" ${bg(item.bannerImageUrl || school().majorBannerImageUrl || school().bannerImageUrl || school().imageUrl)}><span class="crumb">${category().name} / ${school().name} / ${current.level}</span><strong class="title">${item.name}</strong><span class="desc">${item.desc}</span></section><section class="detail-card"><strong class="detail-title">当前价格</strong><strong class="price">${price.price}</strong><span class="detail-text">${price.service}</span></section>${majorDetailFlow(item)}<section class="detail-card"><strong class="detail-title">适合人群</strong><div class="tags">${(item.tags || []).map((tag) => `<span class="tag">${tag}</span>`).join("")}</div></section>`;
     }
 
     function render() {
+      clearBannerTimer();
       if (current.view === "home") renderHome();
       if (current.view === "teacher") renderTeacher();
       if (current.view === "media") renderMedia();
@@ -254,6 +326,10 @@
       if (current.view === "levels") renderLevels();
       if (current.view === "majors") renderMajors();
       if (current.view === "major") renderMajor();
+      app.insertAdjacentHTML("beforeend", `<nav class="bottom-nav"><button class="nav-btn" id="navBack" ${historyBack.length ? "" : "disabled"}>‹</button><button class="nav-btn primary" id="navHome">⌂</button><button class="nav-btn" id="navForward" ${historyForward.length ? "" : "disabled"}>›</button></nav>`);
+      app.querySelector("#navBack").onclick = () => goHistory("back");
+      app.querySelector("#navHome").onclick = () => go("home");
+      app.querySelector("#navForward").onclick = () => goHistory("forward");
     }
 
     fetch("/api/site")

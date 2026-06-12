@@ -3,6 +3,7 @@ const { catalog } = require("../../data/catalog")
 Page({
   data: {
     org: catalog.org,
+    bannerSlides: catalog.org.bannerSlides || (catalog.org.bannerImages || []).map((imageUrl) => ({ imageUrl, title: "", desc: "" })),
     teachers: catalog.teachers,
     mediaAccounts: catalog.mediaAccounts,
     categories: catalog.categories

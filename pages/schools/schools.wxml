@@ -1,9 +1,13 @@
 <view class="page" wx:if="{{category}}">
-  <view class="top-banner">
-    <text class="crumb">首页 / {{category.name}}</text>
-    <text class="title">{{category.name}}</text>
-    <text class="desc">{{category.desc}}</text>
-  </view>
+  <swiper wx:if="{{bannerSlides.length}}" class="top-banner" indicator-dots autoplay circular interval="3600">
+    <swiper-item wx:for="{{bannerSlides}}" wx:key="imageUrl">
+      <image class="banner-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+      <view wx:if="{{item.title || item.desc}}" class="banner-caption">
+        <text class="title">{{item.title}}</text>
+        <text class="desc">{{item.desc}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
 
   <view class="section-head">
     <text class="section-title">选择学校</text>

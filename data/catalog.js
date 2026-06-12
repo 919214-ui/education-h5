@@ -1,7 +1,9 @@
 const catalog = {
   org: {
-    name: "华升学历规划中心",
+    name: "新火教育产品中心",
     desc: "专注成人学历提升报考规划，覆盖小自考、助学自考、开放大学等项目，按目标岗位、拿证节奏和预算匹配方案。",
+    bannerImages: [],
+    bannerSlides: [],
     stats: [
       { value: "4", label: "项目类目" },
       { value: "20+", label: "热门专业" },

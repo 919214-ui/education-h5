@@ -4,6 +4,7 @@ Page({
   data: {
     categoryId: "",
     category: null,
+    bannerSlides: [],
     schools: []
   },
 
@@ -12,6 +13,7 @@ Page({
     this.setData({
       categoryId: category.id,
       category,
+      bannerSlides: category.bannerSlides || [category.bannerImageUrl || category.coverImageUrl].filter(Boolean).map((imageUrl) => ({ imageUrl, title: "", desc: "" })),
       schools: category.schools
     })
   },

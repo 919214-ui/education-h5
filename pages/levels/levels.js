@@ -4,25 +4,33 @@ Page({
   data: {
     category: null,
     school: null,
-    levels: [
-      {
-        name: "专科"
-      },
-      {
-        name: "本科"
-      }
-    ]
+    bannerSlides: [],
+    groups: []
   },
 
   onLoad(options) {
     const category = findCategory(options.categoryId)
     const school = findSchool(category.id, options.schoolId)
-    this.setData({ category, school })
+    const groups = ["专科", "本科"].map((level) => ({
+      level,
+      majors: (school.majors || [])
+        .map((major) => {
+          const selectedPrice = (major.prices || []).find((price) => price.level === level)
+          return selectedPrice ? Object.assign({}, major, { selectedPrice }) : null
+        })
+        .filter(Boolean)
+    }))
+    this.setData({
+      category,
+      school,
+      bannerSlides: school.bannerSlides || [school.bannerImageUrl || school.imageUrl].filter(Boolean).map((imageUrl) => ({ imageUrl, title: "", desc: "" })),
+      groups
+    })
   },
 
-  goMajors(event) {
+  goMajor(event) {
     wx.navigateTo({
-      url: `/pages/majors/majors?categoryId=${this.data.category.id}&schoolId=${this.data.school.id}&level=${event.currentTarget.dataset.level}`
+      url: `/pages/majorDetail/majorDetail?categoryId=${this.data.category.id}&schoolId=${this.data.school.id}&level=${event.currentTarget.dataset.level}&majorId=${event.currentTarget.dataset.id}`
     })
   },
 

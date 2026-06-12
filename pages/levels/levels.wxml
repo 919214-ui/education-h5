@@ -1,36 +1,37 @@
 <view class="page" wx:if="{{school}}">
-  <view class="school-hero">
-    <view class="school-logo">{{school.imageLabel}}</view>
-    <view class="school-copy">
-      <text class="path">{{category.name}}</text>
-      <text class="school-name">{{school.name}}</text>
-      <text class="school-desc">{{school.intro}}</text>
+  <swiper wx:if="{{bannerSlides.length}}" class="school-hero" indicator-dots autoplay circular interval="3600">
+    <swiper-item wx:for="{{bannerSlides}}" wx:key="imageUrl">
+      <image class="hero-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+      <view wx:if="{{item.title || item.desc}}" class="hero-caption">
+        <text class="caption-title">{{item.title}}</text>
+        <text class="caption-desc">{{item.desc}}</text>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="school-summary">
+    <text class="school-name">{{school.name}}</text>
+    <text class="school-desc">{{school.intro}}</text>
+  </view>
+
+  <view wx:for="{{groups}}" wx:key="level">
+    <view class="section-head">
+      <text class="section-title">{{item.level}}专业</text>
+      <text class="section-subtitle">{{item.majors.length}}个可选</text>
     </view>
-  </view>
 
-  <button class="share-button" open-type="share">分享给学生</button>
-
-  <view class="school-detail">
-    <view class="intro-image">{{school.imageLabel}}</view>
-    <text class="detail-title">学校介绍</text>
-    <text class="detail-text">{{school.detail}}</text>
-  </view>
-
-  <view class="section-head">
-    <text class="section-title">选择报读层次</text>
-    <text class="section-subtitle">下一步查看专业和价格</text>
-  </view>
-
-  <view class="level-list">
-    <view
-      wx:for="{{levels}}"
-      wx:key="name"
-      class="level-card"
-      data-level="{{item.name}}"
-      bindtap="goMajors"
-    >
-      <text class="level-name">{{item.name}}</text>
-      <text class="arrow">查看专业</text>
+    <view class="major-list">
+      <view wx:for="{{item.majors}}" wx:for-item="major" wx:key="id" class="major-card" data-id="{{major.id}}" data-level="{{item.level}}" bindtap="goMajor">
+        <view class="major-main">
+          <text class="major-name">{{major.name}}</text>
+          <text class="major-desc">{{major.desc}}</text>
+        </view>
+        <view class="major-side">
+          <text class="price">{{major.selectedPrice.price}}</text>
+          <text class="detail-link">详情</text>
+        </view>
+      </view>
+      <view wx:if="{{!item.majors.length}}" class="empty">暂无{{item.level}}专业</view>
     </view>
   </view>
 </view>

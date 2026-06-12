@@ -3,60 +3,55 @@
 }
 
 .school-hero,
-.level-card,
-.school-detail {
+.school-summary,
+.major-card,
+.empty {
   border-radius: 8rpx;
   background: #fff;
   box-shadow: 0 8rpx 28rpx rgba(39, 63, 60, .08);
 }
 
 .school-hero {
-  padding: 28rpx;
-  display: flex;
-  gap: 22rpx;
+  height: 520rpx;
+  overflow: hidden;
+  background: #fff;
 }
 
-.school-logo {
-  width: 150rpx;
-  height: 180rpx;
-  border-radius: 8rpx;
-  background: linear-gradient(145deg, #fff0e7 0%, #e9f3f1 100%);
-  color: #b94438;
-  font-size: 58rpx;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero-image {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.school-copy {
-  flex: 1;
-  min-width: 0;
+.hero-caption {
+  position: absolute;
+  left: 32rpx;
+  right: 32rpx;
+  bottom: 44rpx;
+  color: #fff;
+  text-shadow: 0 4rpx 22rpx rgba(0, 0, 0, .36);
   display: flex;
   flex-direction: column;
 }
 
-.share-button {
-  width: 100%;
-  height: 78rpx;
-  margin-top: 18rpx;
-  border-radius: 8rpx;
-  background: #1f5f5b;
-  color: #fff;
-  font-size: 28rpx;
+.caption-title {
+  font-size: 46rpx;
+  line-height: 1.18;
   font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.path {
-  font-size: 22rpx;
-  color: #8a6a36;
+.caption-desc {
+  margin-top: 12rpx;
+  font-size: 25rpx;
+  line-height: 1.45;
+}
+
+.school-summary {
+  margin-top: 22rpx;
+  padding: 28rpx;
 }
 
 .school-name {
-  margin-top: 12rpx;
   font-size: 38rpx;
   font-weight: 900;
 }
@@ -86,113 +81,62 @@
   color: #697a77;
 }
 
-.level-list {
+.major-list {
   display: flex;
   flex-direction: column;
-  gap: 22rpx;
+  gap: 18rpx;
 }
 
-.level-card {
-  min-height: 230rpx;
-  padding: 34rpx 30rpx;
+.major-card {
+  min-height: 156rpx;
+  padding: 24rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24rpx;
+  gap: 20rpx;
 }
 
-.school-detail {
-  margin-top: 22rpx;
-  min-height: 420rpx;
-  padding: 30rpx;
-}
-
-.intro-image {
-  width: 100%;
-  height: 230rpx;
-  margin-bottom: 24rpx;
-  border-radius: 8rpx;
-  background: linear-gradient(135deg, #fff0e7 0%, #f7d7a2 48%, #e9f3f1 100%);
-  color: #b94438;
-  font-size: 52rpx;
-  font-weight: 900;
+.major-main {
+  flex: 1;
+  min-width: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.detail-title {
-  display: block;
-  font-size: 29rpx;
+.major-name {
+  font-size: 30rpx;
   font-weight: 900;
 }
 
-.detail-text {
-  display: block;
-  margin-top: 10rpx;
-  font-size: 24rpx;
-  line-height: 1.55;
+.major-desc {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.45;
   color: #596966;
 }
 
-.level-name {
-  font-size: 58rpx;
+.major-side {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.price {
+  font-size: 30rpx;
   font-weight: 900;
+  color: #b94438;
 }
 
-.level-card {
-  position: relative;
-  min-height: 310rpx;
-  padding: 44rpx 30rpx 78rpx;
-  background: linear-gradient(135deg, #fff7ea 0%, #f3c26b 100%);
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.level-card:nth-child(2) {
-  background: linear-gradient(135deg, #fff3df 0%, #df9d54 100%);
-}
-
-.level-card::before {
-  content: "";
-  position: absolute;
-  right: -54rpx;
-  top: -54rpx;
-  width: 180rpx;
-  height: 180rpx;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .34);
-}
-
-.level-card::after {
-  content: "";
-  position: absolute;
-  left: -44rpx;
-  bottom: -60rpx;
-  width: 190rpx;
-  height: 190rpx;
-  border-radius: 50%;
-  background: rgba(185, 68, 56, .1);
-}
-
-.level-name {
-  position: relative;
-  z-index: 1;
-  color: #6b2f22;
-  text-align: center;
-  font-size: 68rpx;
-  letter-spacing: 0;
-}
-
-.arrow {
-  position: absolute;
-  left: 30rpx;
-  right: 30rpx;
-  bottom: 26rpx;
-  z-index: 1;
-  text-align: center;
-  font-size: 24rpx;
+.detail-link {
+  margin-top: 8rpx;
+  font-size: 23rpx;
   font-weight: 900;
-  color: #7b3d25;
+  color: #1f5f5b;
+}
+
+.empty {
+  padding: 30rpx;
+  text-align: center;
+  color: #697a77;
 }
