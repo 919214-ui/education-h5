@@ -380,10 +380,7 @@
       if (!school.detailHtml) {
         school.detailHtml = `${school.detail ? `<p>${school.detail}</p>` : ""}${school.detailImageUrl ? `<img src="${school.detailImageUrl}" alt="">` : ""}`;
       }
-      return `<div class="subhead"><h3>学校介绍内容</h3></div>
-      <div class="form-grid">
-        <label>介绍框高度(px)<input data-school="detailBoxHeight" placeholder="例如 420"></label>
-      </div>
+      return `<div class="subhead"><h3>学校固定图文介绍</h3></div>
       <div class="rich-editor">
         <div class="rich-toolbar">
           <button class="btn ghost" type="button" id="insertSchoolImage">插入图片</button>
@@ -535,7 +532,7 @@
             <label>项目名称<input id="quickCategory" list="categoryNames" placeholder="例如 四川小自考"></label>
             <label>学校名称<input id="quickSchool" list="schoolNames" placeholder="例如 四川大学"></label>
             <label>专业名称<input id="quickMajor" list="majorNames" placeholder="例如 行政管理"></label>
-            <label>报读层次<input id="quickLevel" placeholder="专科 / 本科"></label>
+            <label>报读层次<select id="quickLevel"><option value="专科">专科</option><option value="本科">本科</option></select></label>
             <label>价格<input id="quickPrice" placeholder="例如 ¥7,680"></label>
             <label>简称头像<input id="quickAvatar" placeholder="例如 行"></label>
           </div>
@@ -576,7 +573,9 @@
         $("#sumLevel").textContent = $("#quickLevel").value || "-";
         $("#sumPrice").textContent = $("#quickPrice").value || "-";
       };
-      ["quickCategory", "quickSchool", "quickMajor", "quickLevel", "quickPrice"].forEach((id) => $("#" + id).oninput = updateSummary);
+      ["quickCategory", "quickSchool", "quickMajor", "quickPrice"].forEach((id) => $("#" + id).oninput = updateSummary);
+      $("#quickLevel").onchange = updateSummary;
+      updateSummary();
 
       const editor = $("#quickDetailEditor");
       const fileInput = $("#quickImageInput");
@@ -622,7 +621,7 @@
         }
         let school = findByName(category.schools, schoolName);
         if (!school) {
-          school = { id: uid("school"), name: schoolName, tag: "", intro: "", imageLabel: schoolName.slice(0, 2), imageUrl: "", bannerImageUrl: "", majorBannerImageUrl: "", juniorLevelImageUrl: "", bachelorLevelImageUrl: "", detailHtml: "", detailBoxHeight: "420", majors: [] };
+          school = { id: uid("school"), name: schoolName, tag: "", intro: "", imageLabel: schoolName.slice(0, 2), imageUrl: "", detailHtml: "", majors: [] };
           category.schools.push(school);
         }
         let major = findByName(school.majors, majorName);
@@ -711,11 +710,7 @@
             <label>学校标签<input data-school="tag"></label>
             <label>图片简称<input data-school="imageLabel"></label>
           </div>
-          ${imageBox("imageUrl", "学校头像 / 学校介绍图", school.imageUrl, "school", "建议图片宽 750px，高 420px，单张不超过 4MB。")}
-          ${imageBox("bannerImageUrl", "学校顶部背景图", school.bannerImageUrl, "school", "建议图片宽 750px，高 360px，单张不超过 4MB。")}
-          ${imageBox("majorBannerImageUrl", "专业选择页顶部背景图", school.majorBannerImageUrl, "school", "建议图片宽 750px，高 360px，单张不超过 4MB。")}
-          ${imageBox("juniorLevelImageUrl", "专科卡片背景图", school.juniorLevelImageUrl, "school", "建议图片宽 750px，高 300px，单张不超过 4MB。")}
-          ${imageBox("bachelorLevelImageUrl", "本科卡片背景图", school.bachelorLevelImageUrl, "school", "建议图片宽 750px，高 300px，单张不超过 4MB。")}
+          ${imageBox("imageUrl", "学校列表头像", school.imageUrl, "school", "建议图片宽 750px，高 420px，单张不超过 4MB。")}
           <label>学校简介<textarea data-school="intro"></textarea></label>
           ${renderSchoolDetailEditor(school)}</div></details>` : ""}
 
@@ -723,10 +718,9 @@
           <div class="form-grid">
             <label>专业名称<input data-major="name"></label>
           </div>
-          ${imageBox("bannerImageUrl", "专业详情顶部背景图", major.bannerImageUrl, "major", "建议图片宽 750px，高 360px，单张不超过 4MB。")}
           <label>专业简介<textarea data-major="desc"></textarea></label>
           ${renderMajorDetailBlocks(major)}
-          <label>标签，用逗号分隔<input data-major="tags" data-array="true"></label>
+          <label>专业卡片标签，用逗号分隔<input data-major="tags" data-array="true"></label>
           <div class="subhead"><h3>层次价格</h3><button class="btn ghost" id="addPrice">新增价格</button></div>
           <div id="prices">${(major.prices || []).map((price, index) => `<div class="price-row" data-price-index="${index}">
             <label>层次<select data-price-field="level"><option value="专科" ${price.level === "专科" ? "selected" : ""}>专科</option><option value="本科" ${price.level === "本科" ? "selected" : ""}>本科</option></select></label>
@@ -741,7 +735,7 @@
       </div>`;
 
       if (category) bindPrefixed("cat", category, ["name", "badge", "cover", "desc"]);
-      if (school) bindPrefixed("school", school, ["name", "tag", "imageLabel", "intro", "detailBoxHeight"]);
+      if (school) bindPrefixed("school", school, ["name", "tag", "imageLabel", "intro"]);
       if (major) bindPrefixed("major", major, ["name", "desc", "tags"]);
       content.querySelectorAll("[data-category-banner-row]").forEach((row) => {
         const slide = category.bannerSlides[Number(row.dataset.categoryBannerRow)];
@@ -776,9 +770,9 @@
           render();
         };
       });
-      $("#addSchool").onclick = () => { if (!category) return; category.schools.push({ id: uid("school"), name: "新学校", tag: "", intro: "", imageLabel: "校", imageUrl: "", bannerImageUrl: "", majorBannerImageUrl: "", juniorLevelImageUrl: "", bachelorLevelImageUrl: "", detailImageUrl: "", detail: "", detailHtml: "", detailBoxHeight: "420", majors: [] }); selected.school = category.schools.length - 1; selected.major = 0; render(); };
+      $("#addSchool").onclick = () => { if (!category) return; category.schools.push({ id: uid("school"), name: "新学校", tag: "", intro: "", imageLabel: "校", imageUrl: "", detailImageUrl: "", detail: "", detailHtml: "", majors: [] }); selected.school = category.schools.length - 1; selected.major = 0; render(); };
       if ($("#delSchool")) $("#delSchool").onclick = () => { category.schools.splice(selected.school, 1); selected.school = Math.max(0, selected.school - 1); selected.major = 0; render(); };
-      $("#addMajor").onclick = () => { if (!school) return; school.majors.push({ id: uid("major"), name: "新专业", desc: "", bannerImageUrl: "", tags: [], detail: "", detailImageUrl: "", detailBlocks: [], detailHtml: "", prices: [{ level: "专科", avatar: "专", avatarImageUrl: "", price: "", service: "" }, { level: "本科", avatar: "本", avatarImageUrl: "", price: "", service: "" }] }); selected.major = school.majors.length - 1; render(); };
+      $("#addMajor").onclick = () => { if (!school) return; school.majors.push({ id: uid("major"), name: "新专业", desc: "", tags: [], detail: "", detailImageUrl: "", detailBlocks: [], detailHtml: "", prices: [{ level: "专科", avatar: "专", avatarImageUrl: "", price: "", service: "" }, { level: "本科", avatar: "本", avatarImageUrl: "", price: "", service: "" }] }); selected.major = school.majors.length - 1; render(); };
       if ($("#delMajor")) $("#delMajor").onclick = () => { school.majors.splice(selected.major, 1); selected.major = Math.max(0, selected.major - 1); render(); };
       if ($("#addPrice")) $("#addPrice").onclick = () => { major.prices = major.prices || []; major.prices.push({ level: "专科", avatar: "专", avatarImageUrl: "", price: "", service: "" }); render(); };
       if ($("#addDetailText")) $("#addDetailText").onclick = () => { ensureMajorDetailBlocks(major); major.detailBlocks.push({ type: "text", text: "" }); render(); };
@@ -873,7 +867,9 @@
       content.querySelectorAll("[data-price-index]").forEach((row) => {
         const price = major.prices[Number(row.dataset.priceIndex)];
         row.querySelectorAll("[data-price-field]").forEach((input) => {
-          input.oninput = () => { price[input.dataset.priceField] = input.value; };
+          const syncPriceField = () => { price[input.dataset.priceField] = input.value; };
+          input.oninput = syncPriceField;
+          input.onchange = syncPriceField;
         });
       });
       if ($("#saveBottom")) $("#saveBottom").onclick = save;
